@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://6knlh5dchoqy"]
+
+[ext_resource type="PackedScene" uid="uid://dbitxs2phqwgm" path="res://Entities/Player/Player.tscn" id="1_eygh7"]
+
+[sub_resource type="TileSet" id="TileSet_t5n4y"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_brrve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yk3aw"]
+size = Vector2(915, 26)
+
+[node name="World1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_t5n4y")
+format = 2
+
+[node name="Player" parent="." instance=ExtResource("1_eygh7")]
+position = Vector2(528, 69)
+scale = Vector2(2, 2)
+
+[node name="TestFloor" type="StaticBody2D" parent="."]
+position = Vector2(528, 344)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestFloor"]
+material = SubResource("CanvasItemMaterial_brrve")
+position = Vector2(-47.5, 0)
+shape = SubResource("RectangleShape2D_yk3aw")
+
+[node name="VisualPanel" type="Panel" parent="TestFloor"]
+offset_left = -505.0
+offset_top = -13.0
+offset_right = 411.0
+offset_bottom = 13.0

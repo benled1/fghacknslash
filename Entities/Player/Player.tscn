@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbitxs2phqwgm"]
+[gd_scene load_steps=15 format=3 uid="uid://dbitxs2phqwgm"]
 
+[ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_8fpgv"]
 [ext_resource type="Texture2D" uid="uid://dbad1qwogt3im" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/Character Idle 48x48.png" id="1_adh0c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dtuot"]
@@ -85,6 +86,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_8fpgv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
