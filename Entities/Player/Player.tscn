@@ -263,10 +263,11 @@ shape = SubResource("CapsuleShape2D_dtuot")
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_wriaa")
 animation = &"Falling"
-frame_progress = 0.357243
+frame_progress = 0.06478
 
 [node name="MovementFSM" type="Node2D" parent="."]
 script = ExtResource("6_0jr2g")
+initialState = NodePath("Idle")
 
 [node name="Idle" type="Node2D" parent="MovementFSM"]
 

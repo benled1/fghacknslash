@@ -15,6 +15,6 @@ public partial class State: Node2D
 
     public virtual void PhysicsUpdate(float delta) {}
 
-    public virtual void HandleINput(InputEvent @event) {}
+    public virtual void HandleInput(InputEvent @event) {}
 
 }
