@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt1wcyjrwulhf"]
+
+[sub_resource type="GDScript" id="GDScript_tc8wt"]
+resource_name = "res://MainMenu.gd"
+script/source = "extends Node2D
+
+
+
+func _on_play_button_pressed():
+	get_tree().change_scene_to_file(res://Scenes/level_select.tscn)
+"
+
+[node name="MainMenu" type="Node2D"]
+script = SubResource("GDScript_tc8wt")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 280.0
+offset_right = 704.0
+offset_bottom = 320.0
+text = "Play"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
