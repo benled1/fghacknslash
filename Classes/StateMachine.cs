@@ -21,7 +21,9 @@ public partial class StateMachine: Node2D
                 s.fsm = this;
                 s.Ready();
                 s.Exit(); // resets all states
+                GD.Print("Adding State = " + node.Name);
             }
+            
         }
 
         _currentState = GetNode<State>(initialState);
