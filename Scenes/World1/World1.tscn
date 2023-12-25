@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://6knlh5dchoqy"]
+[gd_scene load_steps=6 format=3 uid="uid://6knlh5dchoqy"]
 
 [ext_resource type="PackedScene" uid="uid://dbitxs2phqwgm" path="res://Entities/Player/Player.tscn" id="1_eygh7"]
+[ext_resource type="PackedScene" uid="uid://p0iwgtskk2k5" path="res://GlobalManagers/InputManager.tscn" id="2_r6lrs"]
 
 [sub_resource type="TileSet" id="TileSet_t5n4y"]
 
@@ -18,6 +19,8 @@ format = 2
 [node name="Player" parent="." instance=ExtResource("1_eygh7")]
 position = Vector2(528, 69)
 scale = Vector2(2, 2)
+
+[node name="InputManager" parent="." instance=ExtResource("2_r6lrs")]
 
 [node name="TestFloor" type="StaticBody2D" parent="."]
 position = Vector2(528, 344)

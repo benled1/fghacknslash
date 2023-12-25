@@ -9,15 +9,15 @@ public partial class Player : CharacterBody2D
 	private float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	private AnimatedSprite2D animatedSprite;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		// init nodes
-        this.animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		this.animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
 		animatedSprite.Play("Idle");
-    }
-    public override void _PhysicsProcess(double delta)
-    {
+	}
+	public override void _PhysicsProcess(double delta)
+	{
 		Vector2 velocity = this.Velocity;
 
 		velocity = applyGravityEffect(velocity, delta);
@@ -25,7 +25,7 @@ public partial class Player : CharacterBody2D
 
 		this.Velocity = velocity;
 		MoveAndSlide();
-    }
+	}
 
 	private Vector2 applyGravityEffect(Vector2 velocity, double delta)
 	{
