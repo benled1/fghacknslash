@@ -4,25 +4,29 @@ using System;
 public partial class IdleGrounded : State
 {
 
-    private GlobalSignals _globalSignals;
-    public override void Enter()
-    {
-        GD.Print("Entering IdleGrounded State");
-    }
+	private GlobalSignals _globalSignals;
+	private Player _player;
+	
+	public override void Enter()
+	{
+		GD.Print("Entering IdleGrounded State");
+	}
 
-    public override void Exit()
-    {
+	public override void Exit()
+	{
 		GD.Print("Exiting IdleGrounded State");
-    }
+	}
 
-    public override void _Ready()
-    {
-      _globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
-      _globalSignals.moveLeft += handleMoveLeft;
-    }
+	public override void _Ready()
+	{
+	  _globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+	  _player = GetNode<Player>("../../../Player");
+	  _globalSignals.moveLeft += handleMoveLeft;
+	
+	}
 
-    public void handleMoveLeft()
-    {
-      GD.Print("Handling move left");
-    }
+	public void handleMoveLeft()
+	{
+	  this._player.moveLeft();
+	}
 }

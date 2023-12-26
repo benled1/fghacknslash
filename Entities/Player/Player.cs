@@ -45,13 +45,7 @@ public partial class Player : CharacterBody2D
 	{	
 		if (Input.IsActionPressed("move_left"))
 		{
-			velocity.X = -this.moveSpeed;
-			animatedSprite.FlipH = true;
-
-			if (IsOnFloor())
-			{
-				animatedSprite.Play("Walk");
-			}
+			
 		}
 		else if (Input.IsActionPressed("move_right"))
 		{
@@ -76,6 +70,19 @@ public partial class Player : CharacterBody2D
 		}
 
 		return velocity;
+	}
+	
+	public void moveLeft()
+	{
+		Vector2 velocity = this.Velocity;
+		velocity.X = -this.moveSpeed;
+		animatedSprite.FlipH = true;
+
+		if (IsOnFloor())
+		{
+			animatedSprite.Play("Walk");
+		}
+		this.Velocity = velocity;
 	}
 
 }

@@ -13,7 +13,6 @@ public partial class InputManager : Node2D
 	{
 		if (Input.IsActionPressed("move_left"))
 		{
-			GD.Print(_globalSignals);
 			_globalSignals.EmitSignal(GlobalSignals.SignalName.moveLeft);
 		}
 	}
