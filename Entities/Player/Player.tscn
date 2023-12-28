@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cmb4yqtigrcq4" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/player land 48x48.png" id="4_0fod2"]
 [ext_resource type="Script" path="res://Entities/Player/MovementFSM.cs" id="6_0jr2g"]
 [ext_resource type="Script" path="res://Entities/Player/States/Airborne.cs" id="7_5lvqo"]
-[ext_resource type="Script" path="res://Entities/Player/States/IdleGrounded.cs" id="8_hqd05"]
+[ext_resource type="Script" path="res://Entities/Player/States/Grounded.cs" id="8_0avxo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dtuot"]
 radius = 4.0
@@ -269,10 +269,10 @@ frame_progress = 0.068817
 
 [node name="MovementFSM" type="Node2D" parent="."]
 script = ExtResource("6_0jr2g")
-initialState = NodePath("IdleGrounded")
+initialState = NodePath("Grounded")
 
 [node name="Airborne" type="Node2D" parent="MovementFSM"]
 script = ExtResource("7_5lvqo")
 
-[node name="IdleGrounded" type="Node2D" parent="MovementFSM"]
-script = ExtResource("8_hqd05")
+[node name="Grounded" type="Node2D" parent="MovementFSM"]
+script = ExtResource("8_0avxo")
