@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://6knlh5dchoqy"]
+[gd_scene load_steps=6 format=3 uid="uid://6knlh5dchoqy"]
 
 [ext_resource type="PackedScene" uid="uid://dbitxs2phqwgm" path="res://Entities/Player/Player.tscn" id="1_eygh7"]
 [ext_resource type="Texture2D" uid="uid://dbn6dsi0wi3al" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_oovli"]
+[ext_resource type="PackedScene" uid="uid://06yjm6ji02v7" path="res://Entities/Enemies/Pig.tscn" id="3_1hrmp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c453a"]
 resource_name = "TestSet"
@@ -312,4 +313,8 @@ layer_0/tile_data = PackedInt32Array(1507341, 131072, 1, 1507342, 131072, 1, 150
 
 [node name="Player" parent="." instance=ExtResource("1_eygh7")]
 position = Vector2(512, 267)
+scale = Vector2(2, 2)
+
+[node name="Pig" parent="." instance=ExtResource("3_1hrmp")]
+position = Vector2(682, 342)
 scale = Vector2(2, 2)

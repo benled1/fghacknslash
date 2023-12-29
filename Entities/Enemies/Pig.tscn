@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=3 uid="uid://06yjm6ji02v7"]
+
+[ext_resource type="Texture2D" uid="uid://d1apb1lgyehom" path="res://Assets/Kings and Pigs/Sprites/03-Pig/Idle (34x28).png" id="1_upowb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vft"]
+size = Vector2(11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yv4x"]
+atlas = ExtResource("1_upowb")
+region = Rect2(0, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajfc3"]
+atlas = ExtResource("1_upowb")
+region = Rect2(34, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju561"]
+atlas = ExtResource("1_upowb")
+region = Rect2(68, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_642tn"]
+atlas = ExtResource("1_upowb")
+region = Rect2(102, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na1uv"]
+atlas = ExtResource("1_upowb")
+region = Rect2(136, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74rjv"]
+atlas = ExtResource("1_upowb")
+region = Rect2(170, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3cuc"]
+atlas = ExtResource("1_upowb")
+region = Rect2(204, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pwyu"]
+atlas = ExtResource("1_upowb")
+region = Rect2(238, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyle0"]
+atlas = ExtResource("1_upowb")
+region = Rect2(272, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66ah5"]
+atlas = ExtResource("1_upowb")
+region = Rect2(306, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ekya"]
+atlas = ExtResource("1_upowb")
+region = Rect2(340, 0, 34, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mnr1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yv4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajfc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju561")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_642tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_na1uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74rjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3cuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pwyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yyle0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ah5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ekya")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Pig" type="CharacterBody2D"]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_k5vft")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -6)
+sprite_frames = SubResource("SpriteFrames_mnr1u")
+animation = &"Idle"
+frame_progress = 0.850998
