@@ -3,14 +3,14 @@ using System;
 using System.Collections.Generic;
 
 
-public partial class StateMachine: Node2D
+public partial class StateMachine: Node
 {
     [Export] public NodePath initialState;
 
     private Dictionary<string, State> _states;
     private State _currentState;
 
-    public override void _Ready()
+    public void Init()
     {
         _states = new Dictionary<string, State>();
         foreach (Node node in GetChildren())
@@ -19,7 +19,7 @@ public partial class StateMachine: Node2D
             {
                 _states[node.Name] = s;
                 s.fsm = this;
-                s.Ready();
+                s.Init();
                 s.Exit(); // resets all states
                 GD.Print("Adding State = " + node.Name);
             }
@@ -30,17 +30,17 @@ public partial class StateMachine: Node2D
         _currentState.Enter();
     }
 
-    public override void _Process(double delta)
+    public void Update(double delta)
     {
         _currentState.Update((float)delta);
     }
 
-    public override void _PhysicsProcess(double delta)
+    public void PhysicsUpdate(double delta)
     {
         _currentState.PhysicsUpdate((float)delta);
     }
 
-    public override void _UnhandledInput(InputEvent @event)
+    public void HandleInput(InputEvent @event)
     {
         _currentState.HandleInput(@event);
     }

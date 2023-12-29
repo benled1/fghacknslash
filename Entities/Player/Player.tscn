@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://r7nglh86mbno" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/player jump 48x48.png" id="3_t8x8v"]
 [ext_resource type="Texture2D" uid="uid://cmb4yqtigrcq4" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/player land 48x48.png" id="4_0fod2"]
 [ext_resource type="Script" path="res://Entities/Player/MovementFSM.cs" id="6_0jr2g"]
-[ext_resource type="Script" path="res://Entities/Player/States/Airborne.cs" id="7_5lvqo"]
-[ext_resource type="Script" path="res://Entities/Player/States/Grounded.cs" id="8_0avxo"]
+[ext_resource type="Script" path="res://Entities/Player/States/Idle.cs" id="7_k3077"]
+[ext_resource type="Script" path="res://Entities/Player/States/Move.cs" id="8_xkuym"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dtuot"]
 radius = 4.0
@@ -264,15 +264,18 @@ shape = SubResource("CapsuleShape2D_dtuot")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_wriaa")
-animation = &"Falling"
-frame_progress = 0.068817
+animation = &"Idle"
 
 [node name="MovementFSM" type="Node2D" parent="."]
 script = ExtResource("6_0jr2g")
-initialState = NodePath("Grounded")
+initialState = NodePath("Idle")
 
-[node name="Airborne" type="Node2D" parent="MovementFSM"]
-script = ExtResource("7_5lvqo")
+[node name="Idle" type="Node2D" parent="MovementFSM"]
+script = ExtResource("7_k3077")
 
-[node name="Grounded" type="Node2D" parent="MovementFSM"]
-script = ExtResource("8_0avxo")
+[node name="Jump" type="Node2D" parent="MovementFSM"]
+
+[node name="Fall" type="Node2D" parent="MovementFSM"]
+
+[node name="Move" type="Node2D" parent="MovementFSM"]
+script = ExtResource("8_xkuym")
