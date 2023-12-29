@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dbitxs2phqwgm"]
+[gd_scene load_steps=43 format=3 uid="uid://dbitxs2phqwgm"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_8fpgv"]
 [ext_resource type="Texture2D" uid="uid://dbad1qwogt3im" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/Character Idle 48x48.png" id="1_adh0c"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cmb4yqtigrcq4" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/player land 48x48.png" id="4_0fod2"]
 [ext_resource type="Script" path="res://Entities/Player/MovementFSM.cs" id="6_0jr2g"]
 [ext_resource type="Script" path="res://Entities/Player/States/Idle.cs" id="7_k3077"]
+[ext_resource type="Script" path="res://Entities/Player/States/Jump.cs" id="8_tgv4d"]
 [ext_resource type="Script" path="res://Entities/Player/States/Move.cs" id="8_xkuym"]
+[ext_resource type="Script" path="res://Entities/Player/States/Fall.cs" id="9_qyuky"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dtuot"]
 radius = 4.0
@@ -264,7 +266,7 @@ shape = SubResource("CapsuleShape2D_dtuot")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_wriaa")
-animation = &"Idle"
+animation = &"Land"
 
 [node name="MovementFSM" type="Node2D" parent="."]
 script = ExtResource("6_0jr2g")
@@ -274,8 +276,10 @@ initialState = NodePath("Idle")
 script = ExtResource("7_k3077")
 
 [node name="Jump" type="Node2D" parent="MovementFSM"]
+script = ExtResource("8_tgv4d")
 
 [node name="Fall" type="Node2D" parent="MovementFSM"]
+script = ExtResource("9_qyuky")
 
 [node name="Move" type="Node2D" parent="MovementFSM"]
 script = ExtResource("8_xkuym")

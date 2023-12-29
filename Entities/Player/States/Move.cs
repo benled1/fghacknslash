@@ -21,6 +21,7 @@ public partial class Move : State
 
     public override void Update(float delta)
     {
+		_flipSprite();
     }
 
 	public override void PhysicsUpdate(float delta)
@@ -40,8 +41,7 @@ public partial class Move : State
 			fsm.TransitionTo("Idle");
 		}
 
-
-		_applyGravity(velocity, delta);
+		velocity = _applyGravity(velocity, delta);
 
         player.Velocity = velocity;
         player.MoveAndSlide();
@@ -49,6 +49,10 @@ public partial class Move : State
 
 	public override void HandleInput(InputEvent @event)
 	{
+		if (Input.IsActionJustPressed("jump") && player.IsOnFloor())
+        {
+            fsm.TransitionTo("Jump");
+        }
 	}
 
 	private Vector2 _moveRight(Vector2 velocity)
@@ -57,7 +61,6 @@ public partial class Move : State
 		player.animatedSprite2D.FlipH = false;
 		return velocity;
 	}
-
 
 	private Vector2 _moveLeft(Vector2 velocity)
 	{
@@ -73,5 +76,17 @@ public partial class Move : State
             velocity.Y += player.gravity * delta;
         }
 		return velocity;
+	}
+
+	private void _flipSprite()
+	{
+		if (Input.IsActionPressed("move_left"))
+		{
+			player.animatedSprite2D.FlipH = true;
+		}
+		else if (Input.IsActionPressed("move_right"))
+		{
+			player.animatedSprite2D.FlipH = false;
+		}
 	}
 }
