@@ -8,7 +8,7 @@ public partial class Player : CharacterBody2D
 	public AnimatedSprite2D animatedSprite2D;
 	public float moveSpeed = 150.0f;
 	public float airControlSpeed = 5.0f;
-	public float jumpVelocity = 400.0f;
+	public float jumpVelocity = 500.0f;
 	
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 

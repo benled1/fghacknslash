@@ -26,6 +26,7 @@ public partial class Fall : State
 	{
         Vector2 velocity = player.Velocity;
 		velocity = _applyGravity(velocity, delta);
+		velocity = _applyAirControl(velocity);
 
 		if (player.IsOnFloor())
 		{
@@ -66,5 +67,18 @@ public partial class Fall : State
 		{
 			player.animatedSprite2D.FlipH = false;
 		}
+	}
+
+	private Vector2 _applyAirControl(Vector2 velocity)
+	{
+		if (Input.IsActionPressed("move_left"))
+		{
+			velocity.X -= player.airControlSpeed;
+		}
+		else if (Input.IsActionPressed("move_right"))
+		{
+			velocity.X += player.airControlSpeed;
+		}
+		return velocity;
 	}
 }
