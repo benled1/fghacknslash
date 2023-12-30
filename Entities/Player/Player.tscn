@@ -137,6 +137,11 @@ region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wriaa"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"BasicAttackSword",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nqd1q")
@@ -267,7 +272,7 @@ shape = SubResource("CapsuleShape2D_dtuot")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_wriaa")
-animation = &"Idle"
+animation = &"BasicAttackSword"
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("6_8xhlq")
