@@ -30,11 +30,11 @@ public partial class PlayerMove : State
 		
 		if (Input.IsActionPressed("move_left"))
 		{
-			velocity = _moveLeft(velocity);
+			velocity.X = -player.moveSpeed;
 		}
 		else if (Input.IsActionPressed("move_right"))
 		{
-			velocity = _moveRight(velocity);
+			velocity.X = player.moveSpeed;
 		}
 		else
 		{
@@ -55,19 +55,6 @@ public partial class PlayerMove : State
         }
 	}
 
-	private Vector2 _moveRight(Vector2 velocity)
-	{
-		velocity.X = player.moveSpeed;
-		player.animatedSprite2D.FlipH = false;
-		return velocity;
-	}
-
-	private Vector2 _moveLeft(Vector2 velocity)
-	{
-		velocity.X = -player.moveSpeed;
-		player.animatedSprite2D.FlipH = true;
-		return velocity;
-	}
 
 	private Vector2 _applyGravity(Vector2 velocity, float delta)
 	{

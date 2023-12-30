@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://06yjm6ji02v7"]
+[gd_scene load_steps=27 format=3 uid="uid://06yjm6ji02v7"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/Pig.cs" id="1_q0x8e"]
 [ext_resource type="Texture2D" uid="uid://d1apb1lgyehom" path="res://Assets/Kings and Pigs/Sprites/03-Pig/Idle (34x28).png" id="1_upowb"]
 [ext_resource type="Script" path="res://Classes/StateMachine.cs" id="3_h6wnk"]
+[ext_resource type="Texture2D" uid="uid://0x7k4mv3ea1c" path="res://Assets/Kings and Pigs/Sprites/03-Pig/Run (34x28).png" id="3_j1a3r"]
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigFollow.cs" id="4_lb4n1"]
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigIdle.cs" id="5_5q15i"]
 
@@ -53,6 +54,30 @@ region = Rect2(306, 0, 34, 28)
 atlas = ExtResource("1_upowb")
 region = Rect2(340, 0, 34, 28)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u02ty"]
+atlas = ExtResource("3_j1a3r")
+region = Rect2(0, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_captc"]
+atlas = ExtResource("3_j1a3r")
+region = Rect2(34, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp2n2"]
+atlas = ExtResource("3_j1a3r")
+region = Rect2(68, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxjud"]
+atlas = ExtResource("3_j1a3r")
+region = Rect2(102, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxqda"]
+atlas = ExtResource("3_j1a3r")
+region = Rect2(136, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggucs"]
+atlas = ExtResource("3_j1a3r")
+region = Rect2(170, 0, 34, 28)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_mnr1u"]
 animations = [{
 "frames": [{
@@ -92,7 +117,33 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u02ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_captc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yp2n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxjud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxqda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggucs")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gbf3"]
+radius = 92.0054
 
 [node name="Pig" type="CharacterBody2D"]
 texture_filter = 1
@@ -106,9 +157,15 @@ shape = SubResource("RectangleShape2D_k5vft")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -6)
 sprite_frames = SubResource("SpriteFrames_mnr1u")
-animation = &"Idle"
-frame = 9
-frame_progress = 0.449605
+animation = &"Walk"
+
+[node name="AggroTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3gbf3")
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("3_h6wnk")
@@ -119,3 +176,8 @@ script = ExtResource("4_lb4n1")
 
 [node name="Idle" type="Node2D" parent="StateMachine"]
 script = ExtResource("5_5q15i")
+
+[connection signal="timeout" from="AggroTimer" to="StateMachine/Follow" method="_OnAggroTimerTimeout"]
+[connection signal="body_entered" from="Area2D" to="StateMachine/Follow" method="_OnArea2DBodyEntered"]
+[connection signal="body_entered" from="Area2D" to="StateMachine/Idle" method="_OnArea2DBodyEntered"]
+[connection signal="body_exited" from="Area2D" to="StateMachine/Follow" method="_OnArea2DBodyExited"]
