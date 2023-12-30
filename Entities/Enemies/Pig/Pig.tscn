@@ -1,6 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://06yjm6ji02v7"]
+[gd_scene load_steps=19 format=3 uid="uid://06yjm6ji02v7"]
 
+[ext_resource type="Script" path="res://Entities/Enemies/Pig/Pig.cs" id="1_q0x8e"]
 [ext_resource type="Texture2D" uid="uid://d1apb1lgyehom" path="res://Assets/Kings and Pigs/Sprites/03-Pig/Idle (34x28).png" id="1_upowb"]
+[ext_resource type="Script" path="res://Classes/StateMachine.cs" id="3_h6wnk"]
+[ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigFollow.cs" id="4_lb4n1"]
+[ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigIdle.cs" id="5_5q15i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vft"]
 size = Vector2(11, 11)
@@ -92,6 +96,8 @@ animations = [{
 
 [node name="Pig" type="CharacterBody2D"]
 texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_q0x8e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, -0.5)
@@ -101,4 +107,15 @@ shape = SubResource("RectangleShape2D_k5vft")
 position = Vector2(-1, -6)
 sprite_frames = SubResource("SpriteFrames_mnr1u")
 animation = &"Idle"
-frame_progress = 0.850998
+frame = 9
+frame_progress = 0.449605
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("3_h6wnk")
+initialState = NodePath("Idle")
+
+[node name="Follow" type="Node2D" parent="StateMachine"]
+script = ExtResource("4_lb4n1")
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("5_5q15i")

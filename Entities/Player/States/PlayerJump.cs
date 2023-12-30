@@ -1,10 +1,9 @@
 using Godot;
 using System;
 
-public partial class Move : State
+public partial class PlayerJump : State
 {
-
-    public Player player;
+	public Player player;
 
     public override void Init()
     {
@@ -12,7 +11,11 @@ public partial class Move : State
     }
     public override void Enter()
 	{
-        player.animatedSprite2D.Play("Walk");
+        player.animatedSprite2D.Play("Jump");
+		Vector2 velocity = player.Velocity;
+		velocity.Y -= player.jumpVelocity;
+		player.Velocity = velocity;
+		player.MoveAndSlide();
 	}
 
 	public override void Exit()
@@ -27,46 +30,18 @@ public partial class Move : State
 	public override void PhysicsUpdate(float delta)
 	{
         Vector2 velocity = player.Velocity;
-		
-		if (Input.IsActionPressed("move_left"))
-		{
-			velocity = _moveLeft(velocity);
-		}
-		else if (Input.IsActionPressed("move_right"))
-		{
-			velocity = _moveRight(velocity);
-		}
-		else
-		{
-			fsm.TransitionTo("Idle");
-		}
-
 		velocity = _applyGravity(velocity, delta);
 
+		if (velocity.Y > 0)
+		{
+			fsm.TransitionTo("Fall");
+		}
         player.Velocity = velocity;
         player.MoveAndSlide();
 	}
 
 	public override void HandleInput(InputEvent @event)
 	{
-		if (Input.IsActionJustPressed("jump") && player.IsOnFloor())
-        {
-            fsm.TransitionTo("Jump");
-        }
-	}
-
-	private Vector2 _moveRight(Vector2 velocity)
-	{
-		velocity.X = player.moveSpeed;
-		player.animatedSprite2D.FlipH = false;
-		return velocity;
-	}
-
-	private Vector2 _moveLeft(Vector2 velocity)
-	{
-		velocity.X = -player.moveSpeed;
-		player.animatedSprite2D.FlipH = true;
-		return velocity;
 	}
 
 	private Vector2 _applyGravity(Vector2 velocity, float delta)
@@ -89,4 +64,5 @@ public partial class Move : State
 			player.animatedSprite2D.FlipH = false;
 		}
 	}
+
 }

@@ -1,17 +1,16 @@
 using Godot;
 using System;
 
-public partial class Idle : State
+public partial class PlayerFall : State
 {
-    public Player player;
-
+	public Player player;
     public override void Init()
     {
         player = this.fsm.GetParent<Player>();
     }
     public override void Enter()
 	{
-        player.animatedSprite2D.Play("Idle");
+        player.animatedSprite2D.Play("Falling");
 	}
 
 	public override void Exit()
@@ -20,15 +19,26 @@ public partial class Idle : State
 
     public override void Update(float delta)
     {
-        _flipSprite();
+		_flipSprite();
     }
 
 	public override void PhysicsUpdate(float delta)
 	{
         Vector2 velocity = player.Velocity;
-        velocity.X = 0;
+		velocity = _applyGravity(velocity, delta);
+		velocity = _applyAirControl(velocity);
 
-        velocity = _applyGravity(velocity, delta);
+		if (player.IsOnFloor())
+		{
+			if (velocity.X == 0)
+			{
+				fsm.TransitionTo("Idle");
+			}
+			else
+			{
+				fsm.TransitionTo("Move");
+			}
+		}
 
         player.Velocity = velocity;
         player.MoveAndSlide();
@@ -36,20 +46,9 @@ public partial class Idle : State
 
 	public override void HandleInput(InputEvent @event)
 	{
-		if (Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
-        {
-            if (player.IsOnFloor())
-            {
-                fsm.TransitionTo("Move");
-            }   
-        }
-        else if (Input.IsActionPressed("jump") && player.IsOnFloor())
-        {
-            fsm.TransitionTo("Jump");
-        }
 	}
 
-    private Vector2 _applyGravity(Vector2 velocity, float delta)
+	private Vector2 _applyGravity(Vector2 velocity, float delta)
 	{
 		if (!player.IsOnFloor())
         {
@@ -58,7 +57,7 @@ public partial class Idle : State
 		return velocity;
 	}
 
-    private void _flipSprite()
+	private void _flipSprite()
 	{
 		if (Input.IsActionPressed("move_left"))
 		{
@@ -70,4 +69,16 @@ public partial class Idle : State
 		}
 	}
 
+	private Vector2 _applyAirControl(Vector2 velocity)
+	{
+		if (Input.IsActionPressed("move_left"))
+		{
+			velocity.X -= player.airControlSpeed;
+		}
+		else if (Input.IsActionPressed("move_right"))
+		{
+			velocity.X += player.airControlSpeed;
+		}
+		return velocity;
+	}
 }
