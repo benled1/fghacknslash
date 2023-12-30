@@ -80,9 +80,8 @@ public partial class PigFollow : State
 		{
             if (!aggroTimer.IsStopped())
             {
-                aggroTimer.Start();
+                aggroTimer.Stop();
             }
-            
 		}
 	}
 }
