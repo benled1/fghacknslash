@@ -13,5 +13,5 @@ public partial class PlayerBasicAttack : State
         player.animationPlayer.Play("BasicAttack");
 	}
 
-	
+    
 }
