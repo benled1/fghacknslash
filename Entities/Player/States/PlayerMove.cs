@@ -69,11 +69,11 @@ public partial class PlayerMove : State
 	{
 		if (Input.IsActionPressed("move_left"))
 		{
-			player.sprite2D.FlipH = true;
+			player.spriteContainer.Scale = new Vector2(-1, player.spriteContainer.Scale.Y);
 		}
 		else if (Input.IsActionPressed("move_right"))
 		{
-			player.sprite2D.FlipH = false;
+			player.spriteContainer.Scale = new Vector2(1, player.spriteContainer.Scale.Y);
 		}
 	}
 }

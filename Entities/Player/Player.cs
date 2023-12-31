@@ -6,7 +6,7 @@ using System.ComponentModel;
 public partial class Player : CharacterBody2D
 {
     public AnimationPlayer animationPlayer;
-    public Sprite2D sprite2D;
+    public Node2D spriteContainer;
 	// public AnimatedSprite2D animatedSprite2D;
 	public float moveSpeed = 150.0f;
 	public float airControlSpeed = 5.0f;
@@ -21,7 +21,7 @@ public partial class Player : CharacterBody2D
 	{
 		this.stateMachine = GetNode<StateMachine>("StateMachine");
 		this.animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        this.sprite2D = GetNode<Sprite2D>("Sprite2D");
+        this.spriteContainer = GetNode<Node2D>("SpriteContainer");
 
 		this.stateMachine.Init();
 	}

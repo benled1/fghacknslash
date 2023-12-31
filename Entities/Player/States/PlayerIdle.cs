@@ -14,15 +14,6 @@ public partial class PlayerIdle : State
         player.animationPlayer.Play("Idle");
 	}
 
-	public override void Exit()
-	{
-	}
-
-    public override void Update(float delta)
-    {
-        _flipSprite();
-    }
-
 	public override void PhysicsUpdate(float delta)
 	{
         Vector2 velocity = player.Velocity;
@@ -56,18 +47,6 @@ public partial class PlayerIdle : State
             velocity.Y += player.gravity * delta;
         }
 		return velocity;
-	}
-
-    private void _flipSprite()
-	{
-		if (Input.IsActionPressed("move_left"))
-		{
-			player.sprite2D.FlipH = true;
-		}
-		else if (Input.IsActionPressed("move_right"))
-		{
-			player.sprite2D.FlipH = false;
-		}
 	}
 
 }
