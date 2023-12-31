@@ -54,7 +54,11 @@ public partial class PlayerMove : State
 
 	public override void HandleInput(InputEvent @event)
 	{
-		if (Input.IsActionJustPressed("jump") && player.IsOnFloor())
+		if (Input.IsActionJustPressed("basic_attack"))
+		{
+			fsm.TransitionTo("BasicAttack");
+		}
+		else if (Input.IsActionJustPressed("jump") && player.IsOnFloor())
         {
             fsm.TransitionTo("Jump");
         }
