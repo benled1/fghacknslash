@@ -9,14 +9,17 @@ public partial class Pig : Entity
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
 	public Player player;
-	public AnimatedSprite2D animatedSprite2D;
+	public AnimationPlayer animationPlayer;
+
+    public Node2D spriteContainer;
 	private StateMachine stateMachine;
 
     public override void _Ready()
     {
         this.hostile = true;
 		this.stateMachine = GetNode<StateMachine>("StateMachine");
-		this.animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		this.animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+        this.spriteContainer = GetNode<Node2D>("SpriteContainer");
 
 		this.stateMachine.Init();
     }

@@ -12,7 +12,7 @@ public partial class PigIdle : State
 
 	public override void Enter()
 	{
-        pig.animatedSprite2D.Play("Idle");
+        pig.animationPlayer.Play("Idle");
 	}
 
 	public override void Exit()

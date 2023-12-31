@@ -16,7 +16,7 @@ public partial class PigFollow : State
 
     public override void Enter()
     {
-        pig.animatedSprite2D.Play("Walk");
+        pig.animationPlayer.Play("Walk");
     }
 
     public override void PhysicsUpdate(float delta)
@@ -50,14 +50,16 @@ public partial class PigFollow : State
     private Vector2 _moveRight(Vector2 velocity)
     {
         velocity.X = pig.moveSpeed;
-        pig.animatedSprite2D.FlipH = true;
+        GD.Print(pig.spriteContainer.Scale);
+        pig.spriteContainer.Scale = new Vector2(-0.5f, pig.spriteContainer.Scale.Y);
         return velocity;
     }
 
     private Vector2 _moveLeft(Vector2 velocity)
     {
         velocity.X = -pig.moveSpeed;
-        pig.animatedSprite2D.FlipH = false;
+        GD.Print(pig.spriteContainer.Scale);
+        pig.spriteContainer.Scale = new Vector2(0.5f, pig.spriteContainer.Scale.Y);
         return velocity;
     }
 
