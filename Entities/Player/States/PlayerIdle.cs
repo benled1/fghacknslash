@@ -36,12 +36,12 @@ public partial class PlayerIdle : State
 
 	public override void HandleInput(InputEvent @event)
 	{
-		if (Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
+        if (Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
         {
             if (player.IsOnFloor())
             {
                 fsm.TransitionTo("Move");
-            }   
+            }
         }
         else if (Input.IsActionPressed("jump") && player.IsOnFloor())
         {

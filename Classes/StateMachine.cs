@@ -54,6 +54,7 @@ public partial class StateMachine: Node
 
         _currentState.Exit();
         _currentState = _states[key];
+        GD.Print("Entering " + key);
         _currentState.Enter();
     }
 }
