@@ -24,7 +24,7 @@ public partial class PlayerBasicAttack : State
             return;
         }
 
-        if (player.Velocity.Y > 0)
+        if (player.Velocity.Y >= 0)
         {
             if (player.Velocity.X != 0)
             {
@@ -37,5 +37,14 @@ public partial class PlayerBasicAttack : State
         }
     }
 
-
+    private void _OnArea2DBodyEntered(Node2D body)
+    {
+        if (body is Entity entity)
+        {
+            if (entity.hostile)
+            {
+                GD.Print("HIT!");
+            }
+        }
+    }
 }

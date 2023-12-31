@@ -1,9 +1,8 @@
 using Godot;
 using System;
 
-public partial class Pig : CharacterBody2D
+public partial class Pig : Entity
 {
-	
 	public float moveSpeed = 100.0f;
 	public float jumpVelocity = 300.0f;
 
@@ -15,6 +14,7 @@ public partial class Pig : CharacterBody2D
 
     public override void _Ready()
     {
+        this.hostile = true;
 		this.stateMachine = GetNode<StateMachine>("StateMachine");
 		this.animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 

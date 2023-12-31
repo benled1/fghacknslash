@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigIdle.cs" id="5_5q15i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vft"]
-size = Vector2(14.5, 16.75)
+size = Vector2(14.5, 12.375)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0yv4x"]
 atlas = ExtResource("1_upowb")
@@ -151,11 +151,11 @@ scale = Vector2(2, 2)
 script = ExtResource("1_q0x8e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10.125)
+position = Vector2(2, 4.1875)
 shape = SubResource("RectangleShape2D_k5vft")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2.5, -11)
+position = Vector2(0, 0.5)
 sprite_frames = SubResource("SpriteFrames_mnr1u")
 animation = &"Walk"
 

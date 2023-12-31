@@ -21,13 +21,22 @@ public partial class PlayerIdle : State
 
         velocity = _applyGravity(velocity, delta);
 
+        if (velocity.Y > 0)
+		{
+			fsm.TransitionTo("Fall");
+		}
+
         player.Velocity = velocity;
         player.MoveAndSlide();
 	}
 
 	public override void HandleInput(InputEvent @event)
 	{
-        if (Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
+        if (Input.IsActionJustPressed("basic_attack"))
+        {
+            fsm.TransitionTo("BasicAttack");
+        }
+        else if (Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
         {
             if (player.IsOnFloor())
             {

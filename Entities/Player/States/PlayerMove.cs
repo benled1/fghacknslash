@@ -43,6 +43,11 @@ public partial class PlayerMove : State
 
 		velocity = _applyGravity(velocity, delta);
 
+		if (velocity.Y > 0)
+		{
+			fsm.TransitionTo("Fall");
+		}
+
         player.Velocity = velocity;
         player.MoveAndSlide();
 	}
