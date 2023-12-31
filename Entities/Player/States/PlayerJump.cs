@@ -11,7 +11,7 @@ public partial class PlayerJump : State
     }
     public override void Enter()
 	{
-        player.animatedSprite2D.Play("Jump");
+        player.animationPlayer.Play("Jump");
 		Vector2 velocity = player.Velocity;
 		velocity.Y -= player.jumpVelocity;
 		player.Velocity = velocity;
@@ -57,11 +57,11 @@ public partial class PlayerJump : State
 	{
 		if (Input.IsActionPressed("move_left"))
 		{
-			player.animatedSprite2D.FlipH = true;
+			player.sprite2D.FlipH = true;
 		}
 		else if (Input.IsActionPressed("move_right"))
 		{
-			player.animatedSprite2D.FlipH = false;
+			player.sprite2D.FlipH = false;
 		}
 	}
 

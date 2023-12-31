@@ -10,7 +10,7 @@ public partial class PlayerFall : State
     }
     public override void Enter()
 	{
-        player.animatedSprite2D.Play("Falling");
+        player.animationPlayer.Play("Fall");
 	}
 
 	public override void Exit()
@@ -61,11 +61,11 @@ public partial class PlayerFall : State
 	{
 		if (Input.IsActionPressed("move_left"))
 		{
-			player.animatedSprite2D.FlipH = true;
+			player.sprite2D.FlipH = true;
 		}
 		else if (Input.IsActionPressed("move_right"))
 		{
-			player.animatedSprite2D.FlipH = false;
+			player.sprite2D.FlipH = false;
 		}
 	}
 

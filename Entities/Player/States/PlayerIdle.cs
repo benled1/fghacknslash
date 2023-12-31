@@ -11,7 +11,7 @@ public partial class PlayerIdle : State
     }
     public override void Enter()
 	{
-        player.animatedSprite2D.Play("Idle");
+        player.animationPlayer.Play("Idle");
 	}
 
 	public override void Exit()
@@ -62,11 +62,11 @@ public partial class PlayerIdle : State
 	{
 		if (Input.IsActionPressed("move_left"))
 		{
-			player.animatedSprite2D.FlipH = true;
+			player.sprite2D.FlipH = true;
 		}
 		else if (Input.IsActionPressed("move_right"))
 		{
-			player.animatedSprite2D.FlipH = false;
+			player.sprite2D.FlipH = false;
 		}
 	}
 

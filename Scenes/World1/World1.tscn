@@ -316,4 +316,4 @@ position = Vector2(324, 284)
 scale = Vector2(2, 2)
 
 [node name="Pig" parent="." instance=ExtResource("3_1hrmp")]
-position = Vector2(755, 233)
+position = Vector2(717, 228)

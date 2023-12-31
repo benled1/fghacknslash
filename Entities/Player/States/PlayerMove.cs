@@ -12,7 +12,7 @@ public partial class PlayerMove : State
     }
     public override void Enter()
 	{
-        player.animatedSprite2D.Play("Walk");
+        player.animationPlayer.Play("Walk");
 	}
 
 	public override void Exit()
@@ -69,11 +69,11 @@ public partial class PlayerMove : State
 	{
 		if (Input.IsActionPressed("move_left"))
 		{
-			player.animatedSprite2D.FlipH = true;
+			player.sprite2D.FlipH = true;
 		}
 		else if (Input.IsActionPressed("move_right"))
 		{
-			player.animatedSprite2D.FlipH = false;
+			player.sprite2D.FlipH = false;
 		}
 	}
 }
