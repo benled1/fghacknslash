@@ -19,6 +19,11 @@ public partial class PigFollow : State
         pig.animationPlayer.Play("Walk");
     }
 
+    public override void Update(float delta)
+    {
+        _updateSpriteDirection();
+    }
+
     public override void PhysicsUpdate(float delta)
     {
 
@@ -50,17 +55,27 @@ public partial class PigFollow : State
     private Vector2 _moveRight(Vector2 velocity)
     {
         velocity.X = pig.moveSpeed;
-        GD.Print(pig.spriteContainer.Scale);
-        pig.spriteContainer.Scale = new Vector2(-0.5f, pig.spriteContainer.Scale.Y);
+        pig.direction = 1;
         return velocity;
     }
 
     private Vector2 _moveLeft(Vector2 velocity)
     {
         velocity.X = -pig.moveSpeed;
-        GD.Print(pig.spriteContainer.Scale);
-        pig.spriteContainer.Scale = new Vector2(0.5f, pig.spriteContainer.Scale.Y);
+        pig.direction = -1;
         return velocity;
+    }
+
+    private void _updateSpriteDirection()
+    {
+        if (pig.direction == -1)
+        {
+            pig.spriteContainer.Scale = new Vector2(0.5f, pig.spriteContainer.Scale.Y);
+        }
+        else if (pig.direction == 1)
+        {
+            pig.spriteContainer.Scale = new Vector2(-0.5f, pig.spriteContainer.Scale.Y);
+        }
     }
 
     private void _OnAggroTimerTimeout()

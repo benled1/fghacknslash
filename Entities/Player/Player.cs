@@ -7,7 +7,6 @@ public partial class Player : CharacterBody2D
 {
     public AnimationPlayer animationPlayer;
     public Node2D spriteContainer;
-	// public AnimatedSprite2D animatedSprite2D;
 	public float moveSpeed = 150.0f;
 	public float airControlSpeed = 5.0f;
 	public float jumpVelocity = 500.0f;

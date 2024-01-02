@@ -39,11 +39,11 @@ public partial class PlayerBasicAttack : State
 
     private void _OnArea2DBodyEntered(Node2D body)
     {
-        if (body is Entity entity)
+        if (body is Pig entity)
         {
             if (entity.hostile)
             {
-                GD.Print("HIT!");
+                entity.stateMachine.TransitionTo("Damaged");
             }
         }
     }
