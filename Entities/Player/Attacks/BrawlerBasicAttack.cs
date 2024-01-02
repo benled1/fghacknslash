@@ -1,6 +1,8 @@
 
 
 
+using Godot;
+
 public partial class BrawlerBasicAttack: Attack
 {
     public BrawlerBasicAttack()
@@ -9,10 +11,13 @@ public partial class BrawlerBasicAttack: Attack
         // in the future this constructor should take the player's attack damage stats and modifiers through 
         // the constructor
         totalDamage = 10;
+        knockBackForce = 20;
     }
 
     public override void damage(StatsComponent statsComponent)
     {
         statsComponent.currentHealth -= totalDamage;
+        statsComponent.knockBackForce = knockBackForce;
+        GD.Print(statsComponent.knockBackForce);
     }
 }

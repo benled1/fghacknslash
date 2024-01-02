@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://06yjm6ji02v7"]
+[gd_scene load_steps=19 format=3 uid="uid://06yjm6ji02v7"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/Pig.cs" id="1_q0x8e"]
 [ext_resource type="Texture2D" uid="uid://d1apb1lgyehom" path="res://Assets/Kings and Pigs/Sprites/03-Pig/Idle (34x28).png" id="1_upowb"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://Components/StatsComponent.cs" id="5_gs517"]
 [ext_resource type="Script" path="res://Components/HitboxComponent.cs" id="5_lelyh"]
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigDamaged.cs" id="8_xgesf"]
-[ext_resource type="Script" path="res://Components/HealthComponent.cs" id="10_7jckd"]
 
 [sub_resource type="Animation" id="Animation_hmxq1"]
 resource_name = "Damaged"
@@ -257,15 +256,12 @@ libraries = {
 "": SubResource("AnimationLibrary_ao8ax")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="StaticCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_k5vft")
 
 [node name="StatsComponent" type="Node2D" parent="."]
 script = ExtResource("5_gs517")
-
-[node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("10_7jckd")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 script = ExtResource("5_lelyh")

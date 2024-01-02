@@ -15,11 +15,17 @@ public partial class PigDamaged : State
         pig.animationPlayer.Play("Damaged");
     }
 
+    public override void Exit()
+    {
+        pig.statsComponent.knockBackForce = 0;
+    }
+
     public override void PhysicsUpdate(float delta)
     {
         Vector2 velocity = pig.Velocity;
 
 		velocity = _applyGravity(velocity, delta);
+		velocity = _applyKnockBack(velocity);
 		
 
 
@@ -31,20 +37,20 @@ public partial class PigDamaged : State
 	{
 		if (!pig.IsOnFloor())
         {
-            velocity.Y += pig.gravity * delta;
+            velocity.Y += pig.statsComponent.gravity * delta;
         }
 		return velocity;
 	}
 
 	private Vector2 _applyKnockBack(Vector2 velocity)
 	{
-		if (pig.direction == -1)
+		if (pig.statsComponent.direction == -1)
 		{
-			velocity.X += pig.knockBackForce;
+			velocity.X += pig.statsComponent.knockBackForce;
 		}
-		else if (pig.direction == 1)
+		else if (pig.statsComponent.direction == 1)
 		{
-			velocity.X -= pig.knockBackForce;
+			velocity.X -= pig.statsComponent.knockBackForce;
 		}
 		return velocity;
 	}

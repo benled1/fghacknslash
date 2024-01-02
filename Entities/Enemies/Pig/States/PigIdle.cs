@@ -38,7 +38,7 @@ public partial class PigIdle : State
 	{
 		if (!pig.IsOnFloor())
         {
-            velocity.Y += pig.gravity * delta;
+            velocity.Y += pig.statsComponent.gravity * delta;
         }
 		return velocity;
 	}
