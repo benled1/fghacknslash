@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection;
 
 public partial class PlayerBasicAttack : State
 {
@@ -37,15 +38,23 @@ public partial class PlayerBasicAttack : State
         }
     }
 
-    private void _OnArea2DBodyEntered(Node2D body)
+    // private void _OnArea2DBodyEntered(Node2D body)
+    // {
+    //     GD.Print(body);
+    //     if (body is HitboxComponent hitboxComponent)
+    //     {
+    //         BrawlerBasicAttack attackObject = new BrawlerBasicAttack();
+    //         hitboxComponent.hit(attackObject);
+    //     }
+    // }
+
+    private void _OnAttackHitboxAreaEntered(Area2D area2D)
     {
-        if (body is Entity entity)
+        if (area2D.GetType() == typeof(HitboxComponent))
         {
-            if (entity.hostile)
-            {
-                BrawlerBasicAttack attackObject = new BrawlerBasicAttack();
-                entity.hitboxComponent.hit(attackObject);
-            }
+            HitboxComponent hitbox = (HitboxComponent) area2D;
+            BrawlerBasicAttack attackObject = new BrawlerBasicAttack();
+            hitbox.hit(attackObject);
         }
     }
 }

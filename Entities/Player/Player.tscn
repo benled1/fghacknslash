@@ -69,7 +69,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpriteContainer/Sprite2D/Area2D/CollisionShape2D:disabled")
+tracks/4/path = NodePath("SpriteContainer/Sprite2D/AttackHitbox/CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -288,7 +288,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpriteContainer/Sprite2D/Area2D/CollisionShape2D:disabled")
+tracks/4/path = NodePath("SpriteContainer/Sprite2D/AttackHitbox/CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -376,9 +376,9 @@ script = ExtResource("1_8fpgv")
 texture = ExtResource("1_adh0c")
 hframes = 10
 
-[node name="Area2D" type="Area2D" parent="SpriteContainer/Sprite2D"]
+[node name="AttackHitbox" type="Area2D" parent="SpriteContainer/Sprite2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteContainer/Sprite2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteContainer/Sprite2D/AttackHitbox"]
 position = Vector2(17, 0)
 shape = SubResource("RectangleShape2D_vbhut")
 disabled = true
@@ -411,5 +411,6 @@ script = ExtResource("12_3n4kf")
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_dtuot")
 
-[connection signal="body_entered" from="SpriteContainer/Sprite2D/Area2D" to="StateMachine/BasicAttack" method="_OnArea2DBodyEntered"]
+[connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/BasicAttack" method="_OnAttackHitboxAreaEntered"]
+[connection signal="body_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/BasicAttack" method="_OnArea2DBodyEntered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/BasicAttack" method="_OnAnimationPlayerAnimationFinished"]

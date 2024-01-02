@@ -11,8 +11,8 @@ public partial class BrawlerBasicAttack: Attack
         totalDamage = 10;
     }
 
-    public override void damage(HealthComponent healthComponent)
+    public override void damage(StatsComponent statsComponent)
     {
-        healthComponent.currentHealth -= totalDamage;
+        statsComponent.currentHealth -= totalDamage;
     }
 }

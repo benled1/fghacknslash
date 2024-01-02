@@ -21,14 +21,7 @@ public partial class PigDamaged : State
 
 		velocity = _applyGravity(velocity, delta);
 		
-		if (pig.direction == -1)
-		{
-			velocity.X += 10;
-		}
-		else if (pig.direction == 1)
-		{
-			velocity.X -= 10;
-		}
+
 
 		pig.Velocity = velocity;
 		pig.MoveAndSlide();
@@ -40,6 +33,19 @@ public partial class PigDamaged : State
         {
             velocity.Y += pig.gravity * delta;
         }
+		return velocity;
+	}
+
+	private Vector2 _applyKnockBack(Vector2 velocity)
+	{
+		if (pig.direction == -1)
+		{
+			velocity.X += pig.knockBackForce;
+		}
+		else if (pig.direction == 1)
+		{
+			velocity.X -= pig.knockBackForce;
+		}
 		return velocity;
 	}
 

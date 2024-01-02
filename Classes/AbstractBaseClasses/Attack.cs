@@ -6,7 +6,7 @@ public partial class Attack
 {
     public float totalDamage;
 
-    public virtual void damage(HealthComponent healthComponent) {}
+    public virtual void damage(StatsComponent statsComponent) {}
 }
 
 

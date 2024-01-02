@@ -3,21 +3,18 @@ using System;
 
 public partial class HitboxComponent : Area2D
 {
-	public HealthComponent healthComponent;
-	public Entity parentEntity;
+	public StatsComponent statsComponent;
+	public StateMachine stateMachine;
 
     public override void _Ready()
     {
-		parentEntity = GetParent<Entity>();
-        healthComponent = GetNode<HealthComponent>("../HealthComponent");
+		stateMachine = GetNode<StateMachine>("../StateMachine");
+        statsComponent = GetNode<StatsComponent>("../StatsComponent");
     }
 
     public void hit(Attack attack)
 	{
-		if (healthComponent != null)
-		{
-			healthComponent.damage(attack);
-		}
-		parentEntity.stateMachine.TransitionTo("Damaged");
+		attack.damage(statsComponent);
+		stateMachine.TransitionTo("Damaged");
 	}
 }
