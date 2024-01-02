@@ -39,11 +39,12 @@ public partial class PlayerBasicAttack : State
 
     private void _OnArea2DBodyEntered(Node2D body)
     {
-        if (body is Pig entity)
+        if (body is Entity entity)
         {
             if (entity.hostile)
             {
-                entity.stateMachine.TransitionTo("Damaged");
+                BrawlerBasicAttack attackObject = new BrawlerBasicAttack();
+                entity.hitboxComponent.hit(attackObject);
             }
         }
     }

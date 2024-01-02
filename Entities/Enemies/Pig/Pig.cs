@@ -14,7 +14,7 @@ public partial class Pig : Entity
 	public AnimationPlayer animationPlayer;
 
     public Node2D spriteContainer;
-	public StateMachine stateMachine;
+
 
     public override void _Ready()
     {
@@ -22,6 +22,7 @@ public partial class Pig : Entity
 		this.stateMachine = GetNode<StateMachine>("StateMachine");
 		this.animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         this.spriteContainer = GetNode<Node2D>("SpriteContainer");
+        this.hitboxComponent = GetNode<HitboxComponent>("HitboxComponent");
 
 		this.stateMachine.Init();
     }

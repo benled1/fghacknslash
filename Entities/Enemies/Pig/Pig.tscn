@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://06yjm6ji02v7"]
+[gd_scene load_steps=19 format=3 uid="uid://06yjm6ji02v7"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/Pig.cs" id="1_q0x8e"]
 [ext_resource type="Texture2D" uid="uid://d1apb1lgyehom" path="res://Assets/Kings and Pigs/Sprites/03-Pig/Idle (34x28).png" id="1_upowb"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bgdbf7ydhp74x" path="res://Assets/Kings and Pigs/Sprites/03-Pig/Hit (34x28).png" id="3_jxoyx"]
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigFollow.cs" id="4_lb4n1"]
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigIdle.cs" id="5_5q15i"]
+[ext_resource type="Script" path="res://Components/HitboxComponent.cs" id="5_lelyh"]
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigDamaged.cs" id="8_xgesf"]
+[ext_resource type="Script" path="res://Components/HealthComponent.cs" id="10_7jckd"]
 
 [sub_resource type="Animation" id="Animation_87ud5"]
 resource_name = "Idle"
@@ -229,6 +231,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5vft"]
 size = Vector2(14.5, 12.375)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mg6q"]
+size = Vector2(13.5, 12)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_3gbf3"]
 radius = 92.0054
 
@@ -255,14 +260,23 @@ libraries = {
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_k5vft")
 
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("10_7jckd")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("5_lelyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-0.25, 0.5)
+shape = SubResource("RectangleShape2D_5mg6q")
+
+[node name="AggroArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+shape = SubResource("CircleShape2D_3gbf3")
+
 [node name="AggroTimer" type="Timer" parent="."]
 wait_time = 2.0
-
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_3gbf3")
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("3_h6wnk")
@@ -278,7 +292,7 @@ script = ExtResource("5_5q15i")
 script = ExtResource("8_xgesf")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Damaged" method="_OnAnimationPlayerAnimationFinished"]
+[connection signal="body_entered" from="AggroArea" to="StateMachine/Follow" method="_OnArea2DBodyEntered"]
+[connection signal="body_entered" from="AggroArea" to="StateMachine/Idle" method="_OnArea2DBodyEntered"]
+[connection signal="body_exited" from="AggroArea" to="StateMachine/Follow" method="_OnArea2DBodyExited"]
 [connection signal="timeout" from="AggroTimer" to="StateMachine/Follow" method="_OnAggroTimerTimeout"]
-[connection signal="body_entered" from="Area2D" to="StateMachine/Follow" method="_OnArea2DBodyEntered"]
-[connection signal="body_entered" from="Area2D" to="StateMachine/Idle" method="_OnArea2DBodyEntered"]
-[connection signal="body_exited" from="Area2D" to="StateMachine/Follow" method="_OnArea2DBodyExited"]
