@@ -43,7 +43,7 @@ public partial class PigIdle : State
 		return velocity;
 	}
 
-	private void _OnArea2DBodyEntered(Node2D body)
+	private void _OnAggroAreaBodyEntered(Node2D body)
 	{
 		if (body is Player player)
 		{

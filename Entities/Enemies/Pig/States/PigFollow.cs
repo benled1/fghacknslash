@@ -30,6 +30,7 @@ public partial class PigFollow : State
     public override void Update(float delta)
     {
         _updateSpriteDirection();
+        _checkAttackRange();
     }
 
     public override void PhysicsUpdate(float delta)
@@ -99,7 +100,7 @@ public partial class PigFollow : State
         }
     }
 
-    private void _OnArea2DBodyEntered(Node2D body)
+    private void _OnAggroAreaBodyEntered(Node2D body)
 	{
 		if (body is Player player)
 		{
@@ -109,4 +110,21 @@ public partial class PigFollow : State
             }
 		}
 	}
+
+    private void _checkAttackRange()
+    {
+        if (Math.Abs(pig.player.Position.X - pig.Position.X) < 50)
+        {
+            fsm.TransitionTo("Attack");
+        }
+    }
+
+    // private void _OnAttackRangeBodyEntered(Node2D body)
+    // {
+    //     GD.Print(body);
+    //     if (body is Player)
+    //     {
+    //         fsm.TransitionTo("Attack");
+    //     }
+    // }
 }

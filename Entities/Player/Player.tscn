@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Components/HitboxComponent.cs" id="13_a8lug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbhut"]
-size = Vector2(22, 14)
+size = Vector2(21, 12)
 
 [sub_resource type="Animation" id="Animation_2a8ja"]
 resource_name = "BasicAttack"
@@ -79,6 +79,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpriteContainer/Sprite2D/AttackHitbox/CollisionShape2D:shape")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_vbhut")]
 }
 
 [sub_resource type="Animation" id="Animation_hve63"]
@@ -299,6 +311,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpriteContainer/Sprite2D/AttackHitbox/CollisionShape2D:shape")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_vbhut")]
+}
 
 [sub_resource type="Animation" id="Animation_4ysgb"]
 resource_name = "Walk"
@@ -385,7 +409,7 @@ hframes = 10
 [node name="AttackHitbox" type="Area2D" parent="SpriteContainer/Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteContainer/Sprite2D/AttackHitbox"]
-position = Vector2(17, 0)
+position = Vector2(16.5, 0)
 shape = SubResource("RectangleShape2D_vbhut")
 disabled = true
 
@@ -428,5 +452,4 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_qcfnw")
 
 [connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/BasicAttack" method="_OnAttackHitboxAreaEntered"]
-[connection signal="body_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/BasicAttack" method="_OnArea2DBodyEntered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/BasicAttack" method="_OnAnimationPlayerAnimationFinished"]

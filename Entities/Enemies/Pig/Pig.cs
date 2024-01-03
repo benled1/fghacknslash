@@ -9,6 +9,7 @@ public partial class Pig : CharacterBody2D
 	private int direction = -1;
 	private float moveSpeed = 100;
 	private float jumpVelocity = 50;
+    private float attackRange = 50;
 
     // NODE REFERENCES
 	public Player player;
@@ -31,7 +32,8 @@ public partial class Pig : CharacterBody2D
         this.statsComponent.Init(maxHealth: maxHealth, 
                                 direction: direction,
                                 moveSpeed: moveSpeed,
-                                jumpVelocity: jumpVelocity);
+                                jumpVelocity: jumpVelocity,
+                                attackRange: attackRange);
 		this.stateMachine.Init();
     }
 

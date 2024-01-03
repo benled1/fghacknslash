@@ -17,7 +17,6 @@ public partial class PigDeath : State
 
 	private void _OnAnimationPlayerAnimationFinished(string anim)
 	{
-		GD.Print("Animation has finished = " + anim);
 		if (anim == "Death")
 		{
 			pig.QueueFree();
