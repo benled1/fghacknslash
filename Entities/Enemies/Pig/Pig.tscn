@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://06yjm6ji02v7"]
+[gd_scene load_steps=22 format=3 uid="uid://06yjm6ji02v7"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/Pig.cs" id="1_q0x8e"]
 [ext_resource type="Texture2D" uid="uid://d1apb1lgyehom" path="res://Assets/Kings and Pigs/Sprites/03-Pig/Idle (34x28).png" id="1_upowb"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigIdle.cs" id="5_5q15i"]
 [ext_resource type="Script" path="res://Components/StatsComponent.cs" id="5_gs517"]
 [ext_resource type="Script" path="res://Components/HitboxComponent.cs" id="5_lelyh"]
+[ext_resource type="Texture2D" uid="uid://dyrvx62w6rl0y" path="res://Assets/Kings and Pigs/Sprites/03-Pig/Dead (34x28).png" id="5_pfkyy"]
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigDamaged.cs" id="8_xgesf"]
+[ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigDeath.cs" id="11_21cab"]
 
 [sub_resource type="Animation" id="Animation_hmxq1"]
 resource_name = "Damaged"
@@ -220,9 +222,62 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_b3073"]
+resource_name = "Death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteContainer/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_pfkyy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteContainer/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteContainer/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteContainer/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ao8ax"]
 _data = {
 "Damaged": SubResource("Animation_hmxq1"),
+"Death": SubResource("Animation_b3073"),
 "Idle": SubResource("Animation_87ud5"),
 "RESET": SubResource("Animation_de16n"),
 "Walk": SubResource("Animation_g3rk4")
@@ -291,7 +346,11 @@ script = ExtResource("5_5q15i")
 [node name="Damaged" type="Node2D" parent="StateMachine"]
 script = ExtResource("8_xgesf")
 
+[node name="Death" type="Node2D" parent="StateMachine"]
+script = ExtResource("11_21cab")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Damaged" method="_OnAnimationPlayerAnimationFinished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Death" method="_OnAnimationPlayerAnimationFinished"]
 [connection signal="body_entered" from="AggroArea" to="StateMachine/Follow" method="_OnArea2DBodyEntered"]
 [connection signal="body_entered" from="AggroArea" to="StateMachine/Idle" method="_OnArea2DBodyEntered"]
 [connection signal="body_exited" from="AggroArea" to="StateMachine/Follow" method="_OnArea2DBodyExited"]

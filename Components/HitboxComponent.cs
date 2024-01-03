@@ -15,6 +15,14 @@ public partial class HitboxComponent : Area2D
     public void hit(Attack attack)
 	{
 		attack.damage(statsComponent);
-		stateMachine.TransitionTo("Damaged");
+		if (statsComponent.currentHealth <= 0)
+		{
+			stateMachine.TransitionTo("Death");
+		}
+		else
+		{
+			stateMachine.TransitionTo("Damaged");
+		}
+		
 	}
 }

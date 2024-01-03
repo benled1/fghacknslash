@@ -19,6 +19,14 @@ public partial class PigFollow : State
         pig.animationPlayer.Play("Walk");
     }
 
+    public override void Exit()
+    {
+        if (!aggroTimer.IsStopped())
+        {
+            aggroTimer.Stop();
+        }
+    }
+
     public override void Update(float delta)
     {
         _updateSpriteDirection();
@@ -87,7 +95,7 @@ public partial class PigFollow : State
     {
         if (body is Player player)
         {
-            aggroTimer.Start();
+            aggroTimer.Autostart = true;
         }
     }
 
