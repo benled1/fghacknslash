@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c44c3b6n3hpnb"]
+
+[ext_resource type="Script" path="res://DebugTools/fpsCounter/FPSCounter.cs" id="1_27doq"]
+
+[node name="FPSCounter" type="ColorRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("1_27doq")
+
+[node name="FPS_COUNTER" type="Label" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 16.0
+offset_right = 100.0
+offset_bottom = 41.0

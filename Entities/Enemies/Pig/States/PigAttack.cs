@@ -12,6 +12,10 @@ public partial class PigAttack : State
 	
     public override void Enter()
     {
+
+		Vector2 velocity = pig.Velocity;
+		velocity.X = 0;
+		pig.Velocity = velocity;
         pig.animationPlayer.Play("Attack");
     }
 
