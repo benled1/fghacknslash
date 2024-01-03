@@ -14,6 +14,11 @@ public partial class HitboxComponent : Area2D
 
     public void hit(Attack attack)
 	{
+		if (statsComponent.invincible)
+		{
+			return;
+		}
+		
 		attack.damage(statsComponent);
 		if (statsComponent.currentHealth <= 0)
 		{
@@ -23,6 +28,5 @@ public partial class HitboxComponent : Area2D
 		{
 			stateMachine.TransitionTo("Damaged");
 		}
-		
 	}
 }

@@ -12,6 +12,7 @@ public partial class StatsComponent : Node2D
 	public float jumpVelocity;
 	public float airControlSpeed;
 	public float attackRange;
+	public bool invincible;
 
 
 	public void Init(float maxHealth=0, 
@@ -30,5 +31,6 @@ public partial class StatsComponent : Node2D
 		this.jumpVelocity = jumpVelocity;
 		this.airControlSpeed = airControlSpeed;
 		this.attackRange = attackRange;
+		this.invincible = false;
 	}
 }

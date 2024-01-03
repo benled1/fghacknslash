@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dbitxs2phqwgm"]
+[gd_scene load_steps=26 format=3 uid="uid://dbitxs2phqwgm"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_8fpgv"]
 [ext_resource type="Texture2D" uid="uid://dbad1qwogt3im" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/Character Idle 48x48.png" id="1_adh0c"]
@@ -12,7 +12,9 @@
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerFall.cs" id="9_qyuky"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerBasicAttack.cs" id="12_3n4kf"]
 [ext_resource type="Script" path="res://Components/StatsComponent.cs" id="12_or0pj"]
+[ext_resource type="Script" path="res://Entities/Player/States/PlayerDamaged.cs" id="12_powgj"]
 [ext_resource type="Script" path="res://Components/HitboxComponent.cs" id="13_a8lug"]
+[ext_resource type="Script" path="res://Entities/Player/PlayerComponents/IFrames.cs" id="15_ww3mt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbhut"]
 size = Vector2(21, 12)
@@ -403,6 +405,7 @@ script = ExtResource("1_8fpgv")
 [node name="SpriteContainer" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="SpriteContainer"]
+texture_filter = 1
 texture = ExtResource("1_adh0c")
 hframes = 10
 
@@ -437,6 +440,9 @@ script = ExtResource("8_xkuym")
 [node name="BasicAttack" type="Node2D" parent="StateMachine"]
 script = ExtResource("12_3n4kf")
 
+[node name="Damaged" type="Node2D" parent="StateMachine"]
+script = ExtResource("12_powgj")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_dtuot")
@@ -450,6 +456,11 @@ script = ExtResource("13_a8lug")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_qcfnw")
+
+[node name="IFrames" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+script = ExtResource("15_ww3mt")
 
 [connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/BasicAttack" method="_OnAttackHitboxAreaEntered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/BasicAttack" method="_OnAnimationPlayerAnimationFinished"]
