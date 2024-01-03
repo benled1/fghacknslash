@@ -13,7 +13,7 @@ public partial class PlayerJump : State
 	{
         player.animationPlayer.Play("Jump");
 		Vector2 velocity = player.Velocity;
-		velocity.Y -= player.jumpVelocity;
+		velocity.Y -= player.statsComponent.jumpVelocity;
 		player.Velocity = velocity;
 		player.MoveAndSlide();
 	}
@@ -48,7 +48,7 @@ public partial class PlayerJump : State
 	{
 		if (!player.IsOnFloor())
         {
-            velocity.Y += player.gravity * delta;
+            velocity.Y += player.statsComponent.gravity * delta;
         }
 		return velocity;
 	}

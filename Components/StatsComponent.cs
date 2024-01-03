@@ -10,12 +10,14 @@ public partial class StatsComponent : Node2D
 	public float gravity;
 	public float moveSpeed;
 	public float jumpVelocity;
+	public float airControlSpeed;
 
 
-	public void Init(float maxHealth, 
-					int direction, 
-					float moveSpeed,
-					float jumpVelocity)
+	public void Init(float maxHealth=0, 
+					int direction=0, 
+					float moveSpeed=0,
+					float jumpVelocity=0,
+					float airControlSpeed=0)
 	{
 		this.maxHealth = maxHealth;
 		this.currentHealth = maxHealth;
@@ -24,5 +26,6 @@ public partial class StatsComponent : Node2D
 		this.gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 		this.moveSpeed = moveSpeed;
 		this.jumpVelocity = jumpVelocity;
+		this.airControlSpeed = airControlSpeed;
 	}
 }

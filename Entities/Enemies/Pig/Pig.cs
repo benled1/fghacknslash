@@ -3,14 +3,6 @@ using System;
 
 public partial class Pig : CharacterBody2D
 {
-    // HIDDEN STATS
-    // public int direction = -1;
-    // public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-    // public float knockBackForce = 0.0f;
-
-    // INGAME STATS
-	// public float moveSpeed = 100.0f;
-	// public float jumpVelocity = 300.0f;
 
     // STATS COMPONENT INITIAL VALUES
     private float maxHealth = 50;
@@ -27,8 +19,6 @@ public partial class Pig : CharacterBody2D
     public HitboxComponent hitboxComponent;
 
 
-
-
     public override void _Ready()
     {
         this.stateMachine = GetNode<StateMachine>("StateMachine");
@@ -38,7 +28,10 @@ public partial class Pig : CharacterBody2D
         this.statsComponent = GetNode<StatsComponent>("StatsComponent");
         
         // INIT
-        this.statsComponent.Init(maxHealth, direction, moveSpeed, jumpVelocity);
+        this.statsComponent.Init(maxHealth: maxHealth, 
+                                direction: direction,
+                                moveSpeed: moveSpeed,
+                                jumpVelocity: jumpVelocity);
 		this.stateMachine.Init();
     }
 

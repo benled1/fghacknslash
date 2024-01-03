@@ -1,27 +1,29 @@
 using Godot;
-using System;
-using System.ComponentModel;
-
 
 public partial class Player : CharacterBody2D
 {
+
+    // STATS COMPONENT INITIAL VALUES
+    private float maxHealth = 100;
+	private float moveSpeed = 150;
+	private float jumpVelocity = 400;
+    
+    // NODE REFERENCES
+    public StateMachine stateMachine;
     public AnimationPlayer animationPlayer;
     public Node2D spriteContainer;
-	public float moveSpeed = 150.0f;
-	public float airControlSpeed = 5.0f;
-	public float jumpVelocity = 500.0f;
-	
-	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-
-	private StateMachine stateMachine;
-
+    public StatsComponent statsComponent;
 
 	public override void _Ready()
 	{
 		this.stateMachine = GetNode<StateMachine>("StateMachine");
 		this.animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         this.spriteContainer = GetNode<Node2D>("SpriteContainer");
+        this.statsComponent = GetNode<StatsComponent>("StatsComponent");
 
+        this.statsComponent.Init(maxHealth: maxHealth, 
+                                moveSpeed: moveSpeed, 
+                                jumpVelocity: jumpVelocity);
 		this.stateMachine.Init();
 	}
 

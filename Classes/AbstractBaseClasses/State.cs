@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-
+// NOTE: this can't be technically abstract since we want to attach it to a node in the scene.
 public partial class State: Node2D
 {
     public StateMachine fsm;

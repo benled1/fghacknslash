@@ -30,11 +30,11 @@ public partial class PlayerMove : State
 		
 		if (Input.IsActionPressed("move_left"))
 		{
-			velocity.X = -player.moveSpeed;
+			velocity.X = -player.statsComponent.moveSpeed;
 		}
 		else if (Input.IsActionPressed("move_right"))
 		{
-			velocity.X = player.moveSpeed;
+			velocity.X = player.statsComponent.moveSpeed;
 		}
 		else
 		{
@@ -69,7 +69,7 @@ public partial class PlayerMove : State
 	{
 		if (!player.IsOnFloor())
         {
-            velocity.Y += player.gravity * delta;
+            velocity.Y += player.statsComponent.gravity * delta;
         }
 		return velocity;
 	}

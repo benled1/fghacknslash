@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbitxs2phqwgm"]
+[gd_scene load_steps=22 format=3 uid="uid://dbitxs2phqwgm"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_8fpgv"]
 [ext_resource type="Texture2D" uid="uid://dbad1qwogt3im" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/Character Idle 48x48.png" id="1_adh0c"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerMove.cs" id="8_xkuym"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerFall.cs" id="9_qyuky"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerBasicAttack.cs" id="12_3n4kf"]
+[ext_resource type="Script" path="res://Components/StatsComponent.cs" id="12_or0pj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbhut"]
 size = Vector2(22, 14)
@@ -410,6 +411,9 @@ script = ExtResource("12_3n4kf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_dtuot")
+
+[node name="StatsComponent" type="Node2D" parent="."]
+script = ExtResource("12_or0pj")
 
 [connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/BasicAttack" method="_OnAttackHitboxAreaEntered"]
 [connection signal="body_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/BasicAttack" method="_OnArea2DBodyEntered"]
