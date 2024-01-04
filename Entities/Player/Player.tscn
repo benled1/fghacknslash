@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dbitxs2phqwgm"]
+[gd_scene load_steps=32 format=3 uid="uid://dbitxs2phqwgm"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_8fpgv"]
 [ext_resource type="Texture2D" uid="uid://dbad1qwogt3im" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/Character Idle 48x48.png" id="1_adh0c"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b3hhhqkw7wa1w" path="res://Assets/Asset Pack-V4/Player Punch Jab/Player Jab 48x48.png" id="5_gf82j"]
 [ext_resource type="Texture2D" uid="uid://baf3rhrjqqevs" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V3/Player Death/Player Death 64x64.png" id="6_7j7jx"]
 [ext_resource type="Script" path="res://Classes/StateMachine.cs" id="6_8xhlq"]
+[ext_resource type="Texture2D" uid="uid://cys3nnt501gwe" path="res://Assets/Asset Pack-V4/Player Punch Cross/Player Punch Cross 64x64.png" id="7_d6f70"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerIdle.cs" id="7_k3077"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerJump.cs" id="8_tgv4d"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerMove.cs" id="8_xkuym"]
@@ -17,9 +18,10 @@
 [ext_resource type="Script" path="res://Components/HitboxComponent.cs" id="13_a8lug"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerDeath.cs" id="14_s3ya1"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerComponents/IFrames.cs" id="15_ww3mt"]
+[ext_resource type="Script" path="res://Entities/Player/States/PlayerSpecialAttack.cs" id="16_42ohq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbhut"]
-size = Vector2(21, 12)
+size = Vector2(30, 12)
 
 [sub_resource type="Animation" id="Animation_2a8ja"]
 resource_name = "BasicAttack"
@@ -433,6 +435,82 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_rt3en"]
+resource_name = "SpecialAttack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteContainer/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_d6f70")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteContainer/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteContainer/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteContainer/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteContainer/Sprite2D/AttackHitbox/CollisionShape2D:shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_vbhut")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpriteContainer/Sprite2D/AttackHitbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_crmef"]
 _data = {
 "BasicAttack": SubResource("Animation_2a8ja"),
@@ -441,6 +519,7 @@ _data = {
 "Idle": SubResource("Animation_uy8lt"),
 "Jump": SubResource("Animation_kf4xh"),
 "RESET": SubResource("Animation_ky4t5"),
+"SpecialAttack": SubResource("Animation_rt3en"),
 "Walk": SubResource("Animation_4ysgb")
 }
 
@@ -466,7 +545,7 @@ hframes = 10
 [node name="AttackHitbox" type="Area2D" parent="SpriteContainer/Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteContainer/Sprite2D/AttackHitbox"]
-position = Vector2(16.5, 0)
+position = Vector2(23, -1)
 shape = SubResource("RectangleShape2D_vbhut")
 disabled = true
 
@@ -500,6 +579,9 @@ script = ExtResource("12_powgj")
 [node name="Death" type="Node2D" parent="StateMachine"]
 script = ExtResource("14_s3ya1")
 
+[node name="SpecialAttack" type="Node2D" parent="StateMachine"]
+script = ExtResource("16_42ohq")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_dtuot")
@@ -520,5 +602,7 @@ one_shot = true
 script = ExtResource("15_ww3mt")
 
 [connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/BasicAttack" method="_OnAttackHitboxAreaEntered"]
+[connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/SpecialAttack" method="_OnAttackHitboxAreaEntered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/BasicAttack" method="_OnAnimationPlayerAnimationFinished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Death" method="_OnAnimationPlayerAnimationFinished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/SpecialAttack" method="_OnAnimationPlayerAnimationFinished"]

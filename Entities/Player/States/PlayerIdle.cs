@@ -36,6 +36,10 @@ public partial class PlayerIdle : State
         {
             fsm.TransitionTo("BasicAttack");
         }
+        else if (Input.IsActionJustPressed("special_attack"))
+        {
+            fsm.TransitionTo("SpecialAttack");
+        }
         else if (Input.IsActionPressed("move_left") || Input.IsActionPressed("move_right"))
         {
             if (player.IsOnFloor())

@@ -58,6 +58,10 @@ public partial class PlayerMove : State
 		{
 			fsm.TransitionTo("BasicAttack");
 		}
+		else if (Input.IsActionJustPressed("special_attack"))
+		{
+			fsm.TransitionTo("SpecialAttack");
+		}
 		else if (Input.IsActionJustPressed("jump") && player.IsOnFloor())
         {
             fsm.TransitionTo("Jump");

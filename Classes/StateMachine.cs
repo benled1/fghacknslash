@@ -8,7 +8,7 @@ public partial class StateMachine: Node
     [Export] public NodePath initialState;
 
     private Dictionary<string, State> _states;
-    private State _currentState;
+    public State currentState;
 
     public void Init()
     {
@@ -24,34 +24,34 @@ public partial class StateMachine: Node
             }
         }
 
-        _currentState = GetNode<State>(initialState);
-        _currentState.Enter();
+        currentState = GetNode<State>(initialState);
+        currentState.Enter();
     }
 
     public void Update(double delta)
     {
-        _currentState.Update((float)delta);
+        currentState.Update((float)delta);
     }
 
     public void PhysicsUpdate(double delta)
     {
-        _currentState.PhysicsUpdate((float)delta);
+        currentState.PhysicsUpdate((float)delta);
     }
 
     public void HandleInput(InputEvent @event)
     {
-        _currentState.HandleInput(@event);
+        currentState.HandleInput(@event);
     }
 
     public void TransitionTo(string key)
     {
-        if (!_states.ContainsKey(key) || _currentState == _states[key])
+        if (!_states.ContainsKey(key) || currentState == _states[key])
         {
             return;
         }
 
-        _currentState.Exit();
-        _currentState = _states[key];
-        _currentState.Enter();
+        currentState.Exit();
+        currentState = _states[key];
+        currentState.Enter();
     }
 }

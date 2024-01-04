@@ -1,8 +1,7 @@
 using Godot;
 using System;
-using System.Reflection;
 
-public partial class PlayerBasicAttack : State
+public partial class PlayerSpecialAttack : State
 {
 	public Player player;
     public override void Init()
@@ -11,12 +10,12 @@ public partial class PlayerBasicAttack : State
     }
     public override void Enter()
 	{
-        player.animationPlayer.Play("BasicAttack");
+        player.animationPlayer.Play("SpecialAttack");
 	}
 
     private void _OnAnimationPlayerAnimationFinished(string anim)
     {
-        if (anim != "BasicAttack")
+        if (anim != "SpecialAttack")
         {
             return;
         }
@@ -39,9 +38,9 @@ public partial class PlayerBasicAttack : State
         if (area2D.GetType() == typeof(HitboxComponent))
         {
             HitboxComponent hitbox = (HitboxComponent) area2D;
-            if (fsm.currentState is PlayerBasicAttack)
+            if (fsm.currentState is PlayerSpecialAttack)
             {
-                BrawlerBasicAttack attackObject = new BrawlerBasicAttack();
+                BrawlerSpecialAttack attackObject = new BrawlerSpecialAttack();
                 hitbox.hit(attackObject);
             }
         }
