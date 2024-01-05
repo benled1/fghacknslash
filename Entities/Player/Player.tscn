@@ -600,16 +600,16 @@ script = ExtResource("13_a8lug")
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_qcfnw")
 
-[node name="IFrames" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-script = ExtResource("15_ww3mt")
-
 [node name="PickUpRange" type="Area2D" parent="."]
 script = ExtResource("20_cgepp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpRange"]
 shape = SubResource("CircleShape2D_lipsd")
+
+[node name="IFrames" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+script = ExtResource("15_ww3mt")
 
 [connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/BasicAttack" method="_OnAttackHitboxAreaEntered"]
 [connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/SpecialAttack" method="_OnAttackHitboxAreaEntered"]

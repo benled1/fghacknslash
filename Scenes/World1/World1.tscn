@@ -322,5 +322,14 @@ position = Vector2(733, 212)
 
 [node name="FPSCounter" parent="." instance=ExtResource("4_t8uu7")]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("5_d17ok")]
-position = Vector2(517, 320)
+[node name="XpBall" parent="." instance=ExtResource("5_d17ok")]
+position = Vector2(492, 283)
+
+[node name="XpBall2" parent="." instance=ExtResource("5_d17ok")]
+position = Vector2(481, 219)
+
+[node name="XpBall3" parent="." instance=ExtResource("5_d17ok")]
+position = Vector2(439, 207)
+
+[node name="XpBall4" parent="." instance=ExtResource("5_d17ok")]
+position = Vector2(241, 348)
