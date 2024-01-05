@@ -403,6 +403,7 @@ libraries = {
 }
 
 [node name="StaticCollisionShape" type="CollisionShape2D" parent="."]
+texture_filter = 1
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_k5vft")
 

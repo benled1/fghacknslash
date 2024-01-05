@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dbn6dsi0wi3al" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_oovli"]
 [ext_resource type="PackedScene" uid="uid://06yjm6ji02v7" path="res://Entities/Enemies/Pig/Pig.tscn" id="3_1hrmp"]
 [ext_resource type="PackedScene" uid="uid://c44c3b6n3hpnb" path="res://DebugTools/fpsCounter/fps_counter.tscn" id="4_t8uu7"]
-[ext_resource type="PackedScene" uid="uid://bqccl2dkjij0s" path="res://Consumables/XpBall/XpBall.tscn" id="5_d17ok"]
+[ext_resource type="PackedScene" uid="uid://dssoc4m6rto7" path="res://Consumables/XpBall/XpBall.tscn" id="5_d17ok"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c453a"]
 resource_name = "TestSet"
@@ -320,16 +320,19 @@ scale = Vector2(2, 2)
 [node name="Pig" parent="." instance=ExtResource("3_1hrmp")]
 position = Vector2(733, 212)
 
+[node name="Pig2" parent="." instance=ExtResource("3_1hrmp")]
+position = Vector2(583, 305)
+
+[node name="Pig3" parent="." instance=ExtResource("3_1hrmp")]
+position = Vector2(355, 134)
+
+[node name="Pig4" parent="." instance=ExtResource("3_1hrmp")]
+position = Vector2(695, 309)
+
+[node name="Pig5" parent="." instance=ExtResource("3_1hrmp")]
+position = Vector2(731, 282)
+
 [node name="FPSCounter" parent="." instance=ExtResource("4_t8uu7")]
 
 [node name="XpBall" parent="." instance=ExtResource("5_d17ok")]
-position = Vector2(492, 283)
-
-[node name="XpBall2" parent="." instance=ExtResource("5_d17ok")]
-position = Vector2(481, 219)
-
-[node name="XpBall3" parent="." instance=ExtResource("5_d17ok")]
-position = Vector2(439, 207)
-
-[node name="XpBall4" parent="." instance=ExtResource("5_d17ok")]
-position = Vector2(241, 348)
+position = Vector2(484, 264)

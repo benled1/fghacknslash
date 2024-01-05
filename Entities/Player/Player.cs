@@ -6,7 +6,7 @@ public partial class Player : CharacterBody2D
     // STATS COMPONENT INITIAL VALUES
     private float maxHealth = 100;
 	private float moveSpeed = 150;
-	private float jumpVelocity = 400;
+	private float jumpVelocity = 450;
     
     // NODE REFERENCES
     public StateMachine stateMachine;
@@ -15,6 +15,7 @@ public partial class Player : CharacterBody2D
     public Sprite2D sprite;
     public StatsComponent statsComponent;
     public Timer iFrames;
+    public PlayerLevel level;
 
 	public override void _Ready()
 	{
@@ -24,7 +25,7 @@ public partial class Player : CharacterBody2D
         this.statsComponent = GetNode<StatsComponent>("StatsComponent");
         this.sprite = GetNode<Sprite2D>("SpriteContainer/Sprite2D");
         this.iFrames = GetNode<Timer>("IFrames");
-
+        this.level = new PlayerLevel(this);
 
         this.statsComponent.Init(maxHealth: maxHealth, 
                                 moveSpeed: moveSpeed, 

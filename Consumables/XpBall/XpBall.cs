@@ -4,11 +4,11 @@ using System.Runtime.CompilerServices;
 
 public partial class XpBall : Consumable
 {
-	public float xpValue = 1;
+	public float xpValue = 10;
 
-    protected override void triggerEffect()
+    protected override void triggerEffect(Player player)
     {
-        GD.Print("XP increased by: " + xpValue);
+		player.level.gainXP(this.xpValue);
 		this.QueueFree();
     }
 
@@ -16,7 +16,7 @@ public partial class XpBall : Consumable
 	{
 		if (body is Player player)
 		{
-			triggerEffect();
+			triggerEffect(player);
 		}
 	}
 

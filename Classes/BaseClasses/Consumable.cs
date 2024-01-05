@@ -19,7 +19,7 @@ public partial class Consumable: CharacterBody2D
             this.MoveAndSlide();
         }
     }
-    protected virtual void triggerEffect() {}
+    protected virtual void triggerEffect(Player player) {}
     public void enableTracking(Player player)
     {
         this.player = player;

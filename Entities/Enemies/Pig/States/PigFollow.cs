@@ -119,12 +119,4 @@ public partial class PigFollow : State
         }
     }
 
-    // private void _OnAttackRangeBodyEntered(Node2D body)
-    // {
-    //     GD.Print(body);
-    //     if (body is Player)
-    //     {
-    //         fsm.TransitionTo("Attack");
-    //     }
-    // }
 }
