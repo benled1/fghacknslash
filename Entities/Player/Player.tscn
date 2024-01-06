@@ -574,7 +574,6 @@ radius = 57.2189
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 2
-collision_mask = 9
 script = ExtResource("1_8fpgv")
 
 [node name="SpriteContainer" type="Node2D" parent="."]
