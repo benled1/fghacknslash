@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Pig : CharacterBody2D
+public partial class Pig : Enemy
 {
 
     // STATS COMPONENT INITIAL VALUES
@@ -10,14 +10,6 @@ public partial class Pig : CharacterBody2D
 	private float moveSpeed = 100;
 	private float jumpVelocity = 50;
     private float attackRange = 50;
-
-    // NODE REFERENCES
-	public Player player;
-	public AnimationPlayer animationPlayer;
-    public Node2D spriteContainer;
-    public StateMachine stateMachine;
-    public StatsComponent statsComponent;
-    public HitboxComponent hitboxComponent;
 
 
     public override void _Ready()
@@ -36,21 +28,5 @@ public partial class Pig : CharacterBody2D
                                 attackRange: attackRange);
 		this.stateMachine.Init();
     }
-
-	public override void _Process(double delta)
-    {
-        this.stateMachine.Update(delta);
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        this.stateMachine.PhysicsUpdate(delta);
-    }
-
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        this.stateMachine.HandleInput(@event);
-    }
-
 
 }
