@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Diagnostics.Tracing;
 
 
 public partial class Consumable: CharacterBody2D
@@ -35,7 +33,7 @@ public partial class Consumable: CharacterBody2D
     }
     private Vector2 _trackPlayer(Vector2 velocity)
     {
-        Vector2 addedVelocity = (this.player.Position - this.Position).Normalized();
+        Vector2 addedVelocity = (this.player.Position - this.Position).Normalized() * 10;
         velocity += addedVelocity;
         return velocity;
     }
