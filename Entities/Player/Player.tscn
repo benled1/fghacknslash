@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://Entities/Player/PlayerComponents/PickUpRange.cs" id="20_cgepp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbhut"]
-size = Vector2(30, 12)
+size = Vector2(24, 12)
 
 [sub_resource type="Animation" id="Animation_2a8ja"]
 resource_name = "BasicAttack"
@@ -98,6 +98,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [SubResource("RectangleShape2D_vbhut")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpriteContainer/Sprite2D/AttackHitbox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, -1)]
 }
 
 [sub_resource type="Animation" id="Animation_n27q2"]
@@ -381,6 +393,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [SubResource("RectangleShape2D_vbhut")]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpriteContainer/Sprite2D/AttackHitbox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, -1)]
+}
 
 [sub_resource type="Animation" id="Animation_rt3en"]
 resource_name = "SpecialAttack"
@@ -456,6 +480,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpriteContainer/Sprite2D/AttackHitbox/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, -1)]
 }
 
 [sub_resource type="Animation" id="Animation_4ysgb"]
@@ -537,6 +573,8 @@ radius = 57.2189
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_8fpgv")
 
 [node name="SpriteContainer" type="Node2D" parent="."]
@@ -547,9 +585,11 @@ texture = ExtResource("1_adh0c")
 hframes = 10
 
 [node name="AttackHitbox" type="Area2D" parent="SpriteContainer/Sprite2D"]
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteContainer/Sprite2D/AttackHitbox"]
-position = Vector2(23, -1)
+position = Vector2(25, -1)
 shape = SubResource("RectangleShape2D_vbhut")
 disabled = true
 
@@ -594,6 +634,8 @@ shape = SubResource("CapsuleShape2D_dtuot")
 script = ExtResource("12_or0pj")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 12
 script = ExtResource("13_a8lug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -601,6 +643,8 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_qcfnw")
 
 [node name="PickUpRange" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
 script = ExtResource("20_cgepp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpRange"]
