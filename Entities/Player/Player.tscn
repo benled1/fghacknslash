@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dbitxs2phqwgm"]
+[gd_scene load_steps=33 format=3 uid="uid://dbitxs2phqwgm"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_8fpgv"]
 [ext_resource type="Texture2D" uid="uid://dbad1qwogt3im" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/Character Idle 48x48.png" id="1_adh0c"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerFall.cs" id="9_qyuky"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerBasicAttack.cs" id="12_3n4kf"]
 [ext_resource type="Script" path="res://Components/StatsComponent.cs" id="12_or0pj"]
-[ext_resource type="Script" path="res://Entities/Player/States/PlayerDamaged.cs" id="12_powgj"]
 [ext_resource type="Script" path="res://Components/HitboxComponent.cs" id="13_a8lug"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerDeath.cs" id="14_s3ya1"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerComponents/IFrames.cs" id="15_ww3mt"]
@@ -615,9 +614,6 @@ script = ExtResource("8_xkuym")
 
 [node name="BasicAttack" type="Node2D" parent="StateMachine"]
 script = ExtResource("12_3n4kf")
-
-[node name="Damaged" type="Node2D" parent="StateMachine"]
-script = ExtResource("12_powgj")
 
 [node name="Death" type="Node2D" parent="StateMachine"]
 script = ExtResource("14_s3ya1")

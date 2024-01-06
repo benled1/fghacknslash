@@ -26,7 +26,14 @@ public partial class HitboxComponent : Area2D
 		}
 		else
 		{
-			stateMachine.TransitionTo("Damaged");
+			if (statsComponent.GetParent() is Player player)
+			{
+				player.iFrames.Start();
+			}
+			else 
+			{
+				stateMachine.TransitionTo("Damaged");
+			}
 		}
 	}
 }
