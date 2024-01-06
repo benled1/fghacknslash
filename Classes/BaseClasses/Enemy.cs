@@ -1,15 +1,24 @@
+using System.Collections.Generic;
 using Godot;
 
 
 public partial class Enemy: CharacterBody2D
 {
-    // NODE REFERENCES
+
+    protected float maxHealth;
+	protected int direction;
+	protected float moveSpeed;
+	protected float jumpVelocity;
+    protected float attackRange;
+
 	public Player player;
 	public AnimationPlayer animationPlayer;
     public Node2D spriteContainer;
     public StateMachine stateMachine;
     public StatsComponent statsComponent;
     public HitboxComponent hitboxComponent;
+    public LootDropComponent lootDropComponent;
+    public Dictionary<PackedScene, int> dropTable;
 
     public override void _Process(double delta)
     {

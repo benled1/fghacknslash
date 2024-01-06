@@ -22,7 +22,6 @@ public partial class Consumable: CharacterBody2D
     {
         this.player = player;
         this.tracking = true;
-        GD.Print(this.tracking);
     }
 
     public void disableTracking()

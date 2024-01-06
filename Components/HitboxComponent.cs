@@ -18,7 +18,7 @@ public partial class HitboxComponent : Area2D
 		{
 			return;
 		}
-		
+
 		attack.damage(statsComponent);
 		if (statsComponent.currentHealth <= 0)
 		{

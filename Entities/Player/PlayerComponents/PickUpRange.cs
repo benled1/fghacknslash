@@ -13,7 +13,6 @@ public partial class PickUpRange : Area2D
 	{
 		if (body is Consumable consumable)
 		{
-			GD.Print("ENABLING TRACKING");
 			consumable.enableTracking(this.player);
 		}
 	}

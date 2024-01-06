@@ -19,6 +19,7 @@ public partial class PigDeath : State
 	{
 		if (anim == "Death")
 		{
+			pig.lootDropComponent.dropLoot();
 			pig.QueueFree();
 		}
 	}

@@ -14,7 +14,6 @@ public class PlayerLevel: Level
     protected override void levelUp()
     {
         this.currentLevel += 1;
-        GD.Print(this.currentLevel);
         player.statsComponent.maxHealth += 10;
         player.statsComponent.moveSpeed += 2;
     }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://06yjm6ji02v7"]
+[gd_scene load_steps=28 format=3 uid="uid://06yjm6ji02v7"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/Pig.cs" id="1_q0x8e"]
 [ext_resource type="Texture2D" uid="uid://d1apb1lgyehom" path="res://Assets/Kings and Pigs/Sprites/03-Pig/Idle (34x28).png" id="1_upowb"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigDamaged.cs" id="8_xgesf"]
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigDeath.cs" id="11_21cab"]
 [ext_resource type="Script" path="res://Entities/Enemies/Pig/States/PigAttack.cs" id="14_gfhqm"]
+[ext_resource type="Script" path="res://Components/LootDropComponent.cs" id="15_omrbq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2um0n"]
 size = Vector2(12.25, 21.5)
@@ -457,6 +458,9 @@ script = ExtResource("11_21cab")
 
 [node name="Attack" type="Node2D" parent="StateMachine"]
 script = ExtResource("14_gfhqm")
+
+[node name="LootDropComponent" type="Node2D" parent="."]
+script = ExtResource("15_omrbq")
 
 [connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/Attack" method="_OnAttackHitboxAreaEntered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Damaged" method="_OnAnimationPlayerAnimationFinished"]

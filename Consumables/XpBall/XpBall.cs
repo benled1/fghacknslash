@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 public partial class XpBall : Consumable
 {
 	public float xpValue = 10;
-
     protected override void triggerEffect(Player player)
     {
 		player.level.gainXP(this.xpValue);
