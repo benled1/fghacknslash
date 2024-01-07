@@ -13,11 +13,11 @@
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerMove.cs" id="8_xkuym"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerFall.cs" id="9_qyuky"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerBasicAttack.cs" id="12_3n4kf"]
-[ext_resource type="Script" path="res://Components/StatsComponent.cs" id="12_or0pj"]
 [ext_resource type="Script" path="res://Components/HitboxComponent.cs" id="13_a8lug"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerDeath.cs" id="14_s3ya1"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerComponents/IFrames.cs" id="15_ww3mt"]
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerSpecialAttack.cs" id="16_42ohq"]
+[ext_resource type="Script" path="res://Components/StatsComponent.cs" id="19_euue5"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerComponents/PickUpRange.cs" id="20_cgepp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbhut"]
@@ -625,9 +625,6 @@ script = ExtResource("16_42ohq")
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_dtuot")
 
-[node name="StatsComponent" type="Node2D" parent="."]
-script = ExtResource("12_or0pj")
-
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 12
@@ -649,6 +646,9 @@ shape = SubResource("CircleShape2D_lipsd")
 wait_time = 0.2
 one_shot = true
 script = ExtResource("15_ww3mt")
+
+[node name="StatsComponent" type="Node2D" parent="."]
+script = ExtResource("19_euue5")
 
 [connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/BasicAttack" method="_OnAttackHitboxAreaEntered"]
 [connection signal="area_entered" from="SpriteContainer/Sprite2D/AttackHitbox" to="StateMachine/SpecialAttack" method="_OnAttackHitboxAreaEntered"]
