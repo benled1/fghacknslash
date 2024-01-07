@@ -6,7 +6,6 @@ public class Attack
 {
     protected StatsComponent attackerStatsComponent;
     
-    // the final values after all modifiers and multipliers are applied
     protected float attackTotalDamage;
     protected float attackKnockBackForce;
 
