@@ -56,32 +56,32 @@ public partial class PigFollow : State
 	{
 		if (!pig.IsOnFloor())
         {
-            velocity.Y += pig.statsComponent.gravity * delta;
+            velocity.Y += pig.statsComponent.movementStats.gravity * delta;
         }
 		return velocity;
 	}
 
     private Vector2 _moveRight(Vector2 velocity)
     {
-        velocity.X = pig.statsComponent.moveSpeed;
-        pig.statsComponent.direction = 1;
+        velocity.X = pig.statsComponent.movementStats.moveSpeed;
+        pig.statsComponent.movementStats.direction = 1;
         return velocity;
     }
 
     private Vector2 _moveLeft(Vector2 velocity)
     {
-        velocity.X = -pig.statsComponent.moveSpeed;
-        pig.statsComponent.direction = -1;
+        velocity.X = -pig.statsComponent.movementStats.moveSpeed;
+        pig.statsComponent.movementStats.direction = -1;
         return velocity;
     }
 
     private void _updateSpriteDirection()
     {
-        if (pig.statsComponent.direction == -1)
+        if (pig.statsComponent.movementStats.direction == -1)
         {
             pig.spriteContainer.Scale = new Vector2(0.5f, pig.spriteContainer.Scale.Y);
         }
-        else if (pig.statsComponent.direction == 1)
+        else if (pig.statsComponent.movementStats.direction == 1)
         {
             pig.spriteContainer.Scale = new Vector2(-0.5f, pig.spriteContainer.Scale.Y);
         }

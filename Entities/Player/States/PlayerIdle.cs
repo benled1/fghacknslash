@@ -57,7 +57,7 @@ public partial class PlayerIdle : State
 	{
 		if (!player.IsOnFloor())
         {
-            velocity.Y += player.statsComponent.gravity * delta;
+            velocity.Y += player.statsComponent.movementStats.gravity * delta;
         }
 		return velocity;
 	}

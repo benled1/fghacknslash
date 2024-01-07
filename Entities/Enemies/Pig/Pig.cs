@@ -25,7 +25,7 @@ public partial class Pig : Enemy
         this.statsComponent.Init(maxHealth: maxHealth,
                                 direction: direction,
                                 moveSpeed: moveSpeed,
-                                jumpVelocity: jumpVelocity,
+                                jumpVelocity: jumpVelocity, 
                                 attackRange: attackRange);
 		this.stateMachine.Init();
     }

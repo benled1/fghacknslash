@@ -13,7 +13,7 @@ public partial class BrawlerSpecialAttack: Attack
 
     public override void damage(StatsComponent statsComponent)
     {
-        statsComponent.currentHealth -= totalDamage;
-        statsComponent.knockBackForce = knockBackForce;
+        statsComponent.healthStats.currentHealth -= totalDamage;
+        statsComponent.damageStats.knockBackForce = knockBackForce;
     }
 }

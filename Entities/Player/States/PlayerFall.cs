@@ -52,7 +52,7 @@ public partial class PlayerFall : State
 	{
 		if (!player.IsOnFloor())
         {
-            velocity.Y += player.statsComponent.gravity * delta;
+            velocity.Y += player.statsComponent.movementStats.gravity * delta;
         }
 		return velocity;
 	}
@@ -73,11 +73,11 @@ public partial class PlayerFall : State
 	{
 		if (Input.IsActionPressed("move_left"))
 		{
-			velocity.X -= player.statsComponent.airControlSpeed;
+			velocity.X -= player.statsComponent.movementStats.airControlSpeed;
 		}
 		else if (Input.IsActionPressed("move_right"))
 		{
-			velocity.X += player.statsComponent.airControlSpeed;
+			velocity.X += player.statsComponent.movementStats.airControlSpeed;
 		}
 		return velocity;
 	}

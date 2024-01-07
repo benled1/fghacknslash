@@ -20,7 +20,7 @@ public partial class HitboxComponent : Area2D
 		}
 
 		attack.damage(statsComponent);
-		if (statsComponent.currentHealth <= 0)
+		if (statsComponent.healthStats.currentHealth <= 0)
 		{
 			stateMachine.TransitionTo("Death");
 		}

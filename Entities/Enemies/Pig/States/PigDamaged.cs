@@ -17,7 +17,7 @@ public partial class PigDamaged : State
 
     public override void Exit()
     {
-        pig.statsComponent.knockBackForce = 0;
+        pig.statsComponent.damageStats.knockBackForce = 0;
     }
 
     public override void PhysicsUpdate(float delta)
@@ -37,20 +37,20 @@ public partial class PigDamaged : State
 	{
 		if (!pig.IsOnFloor())
         {
-            velocity.Y += pig.statsComponent.gravity * delta;
+            velocity.Y += pig.statsComponent.movementStats.gravity * delta;
         }
 		return velocity;
 	}
 
 	private Vector2 _applyKnockBack(Vector2 velocity)
 	{
-		if (pig.statsComponent.direction == -1)
+		if (pig.statsComponent.movementStats.direction == -1)
 		{
-			velocity.X += pig.statsComponent.knockBackForce;
+			velocity.X += pig.statsComponent.damageStats.knockBackForce;
 		}
-		else if (pig.statsComponent.direction == 1)
+		else if (pig.statsComponent.movementStats.direction == 1)
 		{
-			velocity.X -= pig.statsComponent.knockBackForce;
+			velocity.X -= pig.statsComponent.damageStats.knockBackForce;
 		}
 		return velocity;
 	}

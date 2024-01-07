@@ -14,7 +14,7 @@ public class PlayerLevel: Level
     protected override void levelUp()
     {
         this.currentLevel += 1;
-        player.statsComponent.maxHealth += 10;
-        player.statsComponent.moveSpeed += 2;
+        player.statsComponent.healthStats.maxHealth += 10;
+        player.statsComponent.movementStats.moveSpeed += 2;
     }
 }

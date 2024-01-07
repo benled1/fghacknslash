@@ -34,7 +34,7 @@ public partial class PigAttack : State
 	{
 		if (!pig.IsOnFloor())
         {
-            velocity.Y += pig.statsComponent.gravity * delta;
+            velocity.Y += pig.statsComponent.movementStats.gravity * delta;
         }
 		return velocity;
 	}

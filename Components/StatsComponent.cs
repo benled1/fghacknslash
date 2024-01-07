@@ -3,15 +3,12 @@ using System;
 
 public partial class StatsComponent : Node2D
 {
-	public float maxHealth;
-	public float currentHealth;
-	public float knockBackForce;
-	public int direction;
-	public float gravity;
-	public float moveSpeed;
-	public float jumpVelocity;
-	public float airControlSpeed;
-	public float attackRange;
+
+	public DamageStats damageStats = new DamageStats();
+	public HealthStats healthStats = new HealthStats();
+	public MovementStats movementStats = new MovementStats();
+
+	//move invincible to a statuses system.
 	public bool invincible;
 
 
@@ -22,15 +19,15 @@ public partial class StatsComponent : Node2D
 					float airControlSpeed=0,
 					float attackRange=0)
 	{
-		this.maxHealth = maxHealth;
-		this.currentHealth = maxHealth;
-		this.direction = direction;
-		this.knockBackForce = 0;
-		this.gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-		this.moveSpeed = moveSpeed;
-		this.jumpVelocity = jumpVelocity;
-		this.airControlSpeed = airControlSpeed;
-		this.attackRange = attackRange;
+		this.healthStats.maxHealth = maxHealth;
+		this.healthStats.currentHealth = maxHealth;
+		this.movementStats.direction = direction;
+		this.damageStats.knockBackForce = 0;
+		this.movementStats.gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+		this.movementStats.moveSpeed = moveSpeed;
+		this.movementStats.jumpVelocity = jumpVelocity;
+		this.movementStats.airControlSpeed = airControlSpeed;
+		this.damageStats.attackRange = attackRange;
 		this.invincible = false;
 	}
 }

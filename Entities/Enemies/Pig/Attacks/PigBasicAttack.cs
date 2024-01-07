@@ -13,6 +13,6 @@ public partial class PigBasicAttack: Attack
 
     public override void damage(StatsComponent statsComponent)
     {
-        statsComponent.currentHealth -= 10;
+        statsComponent.healthStats.currentHealth -= 10;
     }
 }
