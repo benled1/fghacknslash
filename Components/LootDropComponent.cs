@@ -3,7 +3,6 @@ using System;
 using Godot;
 
 
-
 public partial class LootDropComponent: Node2D
 {
     public Dictionary<PackedScene, int> dropTable;
@@ -29,9 +28,7 @@ public partial class LootDropComponent: Node2D
             {
                 Consumable droppedItem = kvp.Key.Instantiate<Consumable>();
                 droppedItem.Position = this.parent.Position;
-                // need to instantiate the scene and add it to the world scene.
-                // to do this we need global access to the current meta scene.
-                parent.GetParent().AddChild(droppedItem);
+                GetTree().CurrentScene.AddChild(droppedItem);
                 break;
             }
         }
