@@ -44,7 +44,7 @@ public partial class PigAttack : State
 		if (area2D.GetType() == typeof(HitboxComponent))
 		{
 			HitboxComponent hitbox = (HitboxComponent) area2D;
-			PigBasicAttack attackObject = new PigBasicAttack();
+			PigBasicAttack attackObject = new PigBasicAttack(pig.statsComponent);
 			hitbox.hit(attackObject);
 		}
 	}

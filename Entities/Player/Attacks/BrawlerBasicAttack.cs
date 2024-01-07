@@ -2,18 +2,21 @@ using Godot;
 
 public partial class BrawlerBasicAttack: Attack
 {
-    public BrawlerBasicAttack()
+    private const float ATTACK_MULTIPLER = 1.00f;
+    private const float KNOCKBACK_MULTIPLIER = 1.00f;
+
+    public BrawlerBasicAttack(StatsComponent statsComponent)
     {
-        // for now just hardcode the total damage
-        // in the future this constructor should take the player's attack damage stats and modifiers through 
-        // the constructor
-        totalDamage = 10;
-        knockBackForce = 20;
+        // attack specific multiplier
+
+        this.attackerStatsComponent = statsComponent;
+        this.attackTotalDamage = attackerStatsComponent.damageStats.physicalAttack * ATTACK_MULTIPLER;
+        this.attackKnockBackForce = attackerStatsComponent.damageStats.knockBackForce * KNOCKBACK_MULTIPLIER;
     }
 
     public override void damage(StatsComponent statsComponent)
     {
-        statsComponent.healthStats.currentHealth -= totalDamage;
-        statsComponent.damageStats.knockBackForce = knockBackForce;
+        statsComponent.healthStats.currentHealth -= attackTotalDamage;
+        statsComponent.damageStats.knockBackForce = attackKnockBackForce;
     }
 }

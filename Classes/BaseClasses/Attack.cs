@@ -4,8 +4,11 @@ using System;
 
 public class Attack
 {
-    public float totalDamage;
-    public float knockBackForce;
+    protected StatsComponent attackerStatsComponent;
+    
+    // the final values after all modifiers and multipliers are applied
+    protected float attackTotalDamage;
+    protected float attackKnockBackForce;
 
     public virtual void damage(StatsComponent statsComponent) {}
 }

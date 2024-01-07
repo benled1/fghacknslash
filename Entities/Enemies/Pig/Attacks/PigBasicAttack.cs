@@ -2,17 +2,15 @@ using Godot;
 
 public partial class PigBasicAttack: Attack
 {
-    public PigBasicAttack()
+    private const float ATTACK_MULTIPLER = 1.00f;
+    public PigBasicAttack(StatsComponent statsComponent)
     {
-        // for now just hardcode the total damage
-        // in the future this constructor should take the player's attack damage stats and modifiers through 
-        // the constructor
-        totalDamage = 10;
-        knockBackForce = 0;
+        this.attackerStatsComponent = statsComponent;
+        attackTotalDamage = attackerStatsComponent.damageStats.physicalAttack * ATTACK_MULTIPLER;
     }
 
     public override void damage(StatsComponent statsComponent)
     {
-        statsComponent.healthStats.currentHealth -= 10;
+        statsComponent.healthStats.currentHealth -= attackTotalDamage;
     }
 }

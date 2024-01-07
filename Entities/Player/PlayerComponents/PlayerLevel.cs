@@ -16,5 +16,6 @@ public class PlayerLevel: Level
         this.currentLevel += 1;
         player.statsComponent.healthStats.maxHealth += 10;
         player.statsComponent.movementStats.moveSpeed += 2;
+        player.statsComponent.damageStats.physicalAttack += 2;
     }
 }

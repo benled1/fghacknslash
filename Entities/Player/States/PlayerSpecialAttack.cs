@@ -40,7 +40,7 @@ public partial class PlayerSpecialAttack : State
             HitboxComponent hitbox = (HitboxComponent) area2D;
             if (fsm.currentState is PlayerSpecialAttack)
             {
-                BrawlerSpecialAttack attackObject = new BrawlerSpecialAttack();
+                BrawlerSpecialAttack attackObject = new BrawlerSpecialAttack(this.player.statsComponent);
                 hitbox.hit(attackObject);
             }
         }

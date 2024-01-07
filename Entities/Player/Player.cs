@@ -6,7 +6,10 @@ public partial class Player : CharacterBody2D
     // STATS COMPONENT INITIAL VALUES
     private float maxHealth = 100;
 	private float moveSpeed = 150;
-	private float jumpVelocity = 450;
+	private float jumpVelocity = 600;
+    private float physicalAttack = 10;
+    private float knockBackForce = 10;
+
     
     // NODE REFERENCES
     public StateMachine stateMachine;
@@ -29,7 +32,9 @@ public partial class Player : CharacterBody2D
 
         this.statsComponent.Init(maxHealth: maxHealth, 
                                 moveSpeed: moveSpeed, 
-                                jumpVelocity: jumpVelocity);
+                                jumpVelocity: jumpVelocity,
+                                physicalAttack: physicalAttack,
+                                knockBackForce: knockBackForce);
 		this.stateMachine.Init();
 	}
 

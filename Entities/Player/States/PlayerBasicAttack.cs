@@ -39,7 +39,7 @@ public partial class PlayerBasicAttack : State
             HitboxComponent hitbox = (HitboxComponent) area2D;
             if (fsm.currentState is PlayerBasicAttack)
             {
-                BrawlerBasicAttack attackObject = new BrawlerBasicAttack();
+                BrawlerBasicAttack attackObject = new BrawlerBasicAttack(player.statsComponent);
                 hitbox.hit(attackObject);
             }
         }

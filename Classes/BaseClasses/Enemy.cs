@@ -9,7 +9,7 @@ public partial class Enemy: CharacterBody2D
 	protected int direction;
 	protected float moveSpeed;
 	protected float jumpVelocity;
-    protected float attackRange;
+    protected float physicalAttack;
 
 	public Player player;
 	public AnimationPlayer animationPlayer;
