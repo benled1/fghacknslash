@@ -26,7 +26,7 @@ public partial class Player : CharacterBody2D
 		this.animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         this.spriteContainer = GetNode<Node2D>("SpriteContainer");
         this.statsComponent = GetNode<StatsComponent>("StatsComponent");
-        this.sprite = GetNode<Sprite2D>("SpriteContainer/Sprite2D");
+        this.sprite = GetNode<Sprite2D>("SpriteContainer/Player");
         this.iFrames = GetNode<Timer>("IFrames");
         this.level = new PlayerLevel(this);
 
