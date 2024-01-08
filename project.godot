@@ -23,6 +23,19 @@ GlobalSignals="*res://Classes/GlobalSignals.cs"
 
 project/assembly_name="FGHacknSlash"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Classes/": "green",
+"res://Components/": "green",
+"res://DebugTools/": "orange",
+"res://Entities/": "green",
+"res://Managers/": "green",
+"res://Scenes/": "green",
+"res://Spawners/": "green"
+}
+
 [input]
 
 move_left={

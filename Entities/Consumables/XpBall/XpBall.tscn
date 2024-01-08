@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dssoc4m6rto7"]
 
-[ext_resource type="Script" path="res://Consumables/XpBall/XpBall.cs" id="1_0vcb5"]
+[ext_resource type="Script" path="res://Entities/Consumables/XpBall/XpBall.cs" id="1_0vcb5"]
 [ext_resource type="Texture2D" uid="uid://676uqost4nbi" path="res://Assets/Kings and Pigs/Sprites/12-Live and Coins/Big Diamond Idle (18x14).png" id="2_iiiia"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5pwy"]

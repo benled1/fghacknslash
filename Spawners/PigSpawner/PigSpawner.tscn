@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://mehc3k6g332r"]
+
+[ext_resource type="Script" path="res://Spawners/PigSpawner/PigSpawner.cs" id="1_h3qu0"]
+
+[node name="PigSpawner" type="Node2D"]
+script = ExtResource("1_h3qu0")

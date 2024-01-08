@@ -41,7 +41,7 @@ public partial class Pig : Enemy
     {
         this.dropTable = new Dictionary<PackedScene, int>()
         {
-            {ResourceLoader.Load<PackedScene>("res://Consumables/XpBall/XpBall.tscn"), 100}
+            {ResourceLoader.Load<PackedScene>("res://Entities/Consumables/XpBall/XpBall.tscn"), 100}
         };
     }
 
