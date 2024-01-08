@@ -19,6 +19,9 @@ public partial class Enemy: CharacterBody2D
     public HitboxComponent hitboxComponent;
     public LootDropComponent lootDropComponent;
     public Dictionary<PackedScene, int> dropTable;
+    public Level level;
+
+
 
     public override void _Process(double delta)
     {

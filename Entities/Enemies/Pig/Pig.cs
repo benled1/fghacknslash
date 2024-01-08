@@ -21,6 +21,7 @@ public partial class Pig : Enemy
         this.spriteContainer = GetNode<Node2D>("SpriteContainer");
         this.statsComponent = GetNode<StatsComponent>("StatsComponent");
         this.lootDropComponent = GetNode<LootDropComponent>("LootDropComponent");
+        this.level = new PigLevel(this);
 
         // define the drop table and init it
         _defineDropTable();

@@ -11,7 +11,7 @@ public class PlayerLevel: Level
         this.player = player;
     }
 
-    protected override void levelUp()
+    public override void levelUp()
     {
         this.currentLevel += 1;
         player.statsComponent.healthStats.maxHealth += 10;

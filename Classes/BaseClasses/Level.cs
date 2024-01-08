@@ -6,7 +6,7 @@ public class Level
     public float maxXP;
     public int currentLevel;
 
-    protected virtual void levelUp() {}
+    public virtual void levelUp() {}
 
     public void gainXP(float value)
     {
