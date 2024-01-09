@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dbitxs2phqwgm"]
+[gd_scene load_steps=39 format=3 uid="uid://dbitxs2phqwgm"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_8fpgv"]
 [ext_resource type="Texture2D" uid="uid://dbad1qwogt3im" path="res://Assets/Asset Packs 1-3 (final)/Asset Pack-V1/Sprite Sheets/Character Idle 48x48.png" id="1_adh0c"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://Entities/Player/States/PlayerSpecialAttack.cs" id="16_42ohq"]
 [ext_resource type="Script" path="res://Components/StatsComponent.cs" id="19_euue5"]
 [ext_resource type="Script" path="res://Entities/Player/PlayerComponents/PickUpRange.cs" id="20_cgepp"]
+[ext_resource type="Script" path="res://Entities/Player/PlayerComponents/InteractRange.cs" id="24_tf12k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbhut"]
 size = Vector2(24, 12)
@@ -694,6 +695,9 @@ height = 22.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_lipsd"]
 radius = 57.2189
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qprj1"]
+radius = 20.0
+
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 2
@@ -767,13 +771,20 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_qcfnw")
 
 [node name="PickUpRange" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("20_cgepp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpRange"]
 shape = SubResource("CircleShape2D_lipsd")
+
+[node name="InteractRange" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("24_tf12k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
+shape = SubResource("CircleShape2D_qprj1")
 
 [node name="IFrames" type="Timer" parent="."]
 wait_time = 0.2
@@ -790,3 +801,5 @@ script = ExtResource("19_euue5")
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/SpecialAttack" method="_OnAnimationPlayerAnimationFinished"]
 [connection signal="body_entered" from="PickUpRange" to="PickUpRange" method="_OnBodyEntered"]
 [connection signal="body_exited" from="PickUpRange" to="PickUpRange" method="_OnBodyExited"]
+[connection signal="body_entered" from="InteractRange" to="InteractRange" method="_OnBodyEntered"]
+[connection signal="body_exited" from="InteractRange" to="InteractRange" method="_OnBodyExited"]
