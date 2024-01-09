@@ -24,7 +24,7 @@ public partial class BossTeleporter : Interactable
 	public override void triggerEffect()
     {
 		this.undoDetected();
-        GD.Print("Moving to next room");
+		GD.Print("Switch scenes");
     }
 
 
