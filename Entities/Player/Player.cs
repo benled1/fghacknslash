@@ -6,7 +6,7 @@ public partial class Player : CharacterBody2D
     // STATS COMPONENT INITIAL VALUES
     private float maxHealth = 100;
 	private float moveSpeed = 150;
-	private float jumpVelocity = 600;
+	private float jumpVelocity = 400;
     private float physicalAttack = 10;
     private float knockBackForce = 10;
 

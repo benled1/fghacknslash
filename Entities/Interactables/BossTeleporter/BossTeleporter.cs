@@ -5,11 +5,13 @@ public partial class BossTeleporter : Interactable
 {
 	private AnimationPlayer animationPlayer;
 	private Sprite2D sprite2D;
+	private SceneSwitcher sceneSwitcher;
 
     public override void _Ready()
     {
         this.animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		this.sprite2D = GetNode<Sprite2D>("Sprite2D");
+		this.sceneSwitcher = GetNode<SceneSwitcher>("/root/SceneSwitcher");
     }
     public override void detected()
 	{
@@ -24,7 +26,7 @@ public partial class BossTeleporter : Interactable
 	public override void triggerEffect()
     {
 		this.undoDetected();
-		GD.Print("Switch scenes");
+		this.sceneSwitcher.loadNewScene("res://Scenes/World1/TestWorldBoss.tscn");
     }
 
 
