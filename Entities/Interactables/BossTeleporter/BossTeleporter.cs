@@ -26,7 +26,7 @@ public partial class BossTeleporter : Interactable
 	public override void triggerEffect()
     {
 		this.undoDetected();
-		this.sceneSwitcher.loadNewScene("res://Scenes/World1/TestWorldBoss.tscn");
+		this.sceneSwitcher.loadNewScene("res://Scenes/BossLevels/Boss1/Boss1.tscn");
     }
 
 
