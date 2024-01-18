@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv70wniwoxvvj"]
+[gd_scene load_steps=8 format=3 uid="uid://bv70wniwoxvvj"]
 
 [ext_resource type="Script" path="res://Managers/GameManager/GameManager.cs" id="1_1hlv1"]
 [ext_resource type="Script" path="res://Classes/StateMachine.cs" id="2_q83i4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Managers/GameManager/States/GameManagerPaused.cs" id="4_1svvi"]
 [ext_resource type="Script" path="res://Managers/GameManager/States/GameManagerBoss.cs" id="5_n4n7j"]
 [ext_resource type="Script" path="res://Managers/GameManager/DifficultyManager.cs" id="6_8osyh"]
+[ext_resource type="Script" path="res://Managers/GameManager/LevelManager.cs" id="7_nq3yk"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_1hlv1")
@@ -28,3 +29,6 @@ script = ExtResource("6_8osyh")
 
 [node name="DifficultyTimer" type="Timer" parent="DifficultyManager"]
 wait_time = 100.0
+
+[node name="LevelManager" type="Node2D" parent="."]
+script = ExtResource("7_nq3yk")

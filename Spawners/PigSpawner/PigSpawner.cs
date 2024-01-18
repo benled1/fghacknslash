@@ -18,7 +18,7 @@ public partial class PigSpawner: Spawner
     {
         base._Ready();
         this.gameManager = GetTree().CurrentScene.GetNode<GameManager>("GameManager");
-        this.tileMap = GetTree().CurrentScene.GetNode<TileMap>("TestWorld/TileMap");
+        this.tileMap = GetTree().CurrentScene.GetNode<TileMap>($"{this.gameManager.levelManager.currentLevel.Name}/TileMap");
         this.spawnableEntity = ResourceLoader.Load<PackedScene>("res://Entities/Enemies/Pig/Pig.tscn");
         this.possibleSpawnLocations = getSpawnLocations();
     }

@@ -3,8 +3,8 @@ using System;
 
 public partial class GameManager : Node2D
 {
-
 	public DifficultyManager difficultyManager;
+    public LevelManager levelManager;
 	private StateMachine stateMachine;
 
 
@@ -12,8 +12,10 @@ public partial class GameManager : Node2D
     {
         this.stateMachine = GetNode<StateMachine>("StateMachine");
 		this.difficultyManager = GetNode<DifficultyManager>("DifficultyManager");
+        this.levelManager = GetNode<LevelManager>("LevelManager");
 
 		this.stateMachine.Init();
+        this.levelManager.loadLevel("res://Scenes/Levels/TestLevel/TestWorldWave.tscn");
     }
 
 	public override void _Process(double delta)

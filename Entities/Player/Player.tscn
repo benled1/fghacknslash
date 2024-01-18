@@ -700,6 +700,7 @@ radius = 20.0
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
+scale = Vector2(2, 2)
 collision_layer = 2
 script = ExtResource("1_8fpgv")
 
