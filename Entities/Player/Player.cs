@@ -15,6 +15,7 @@ public partial class Player : CharacterBody2D
     public StateMachine stateMachine;
     public AnimationPlayer animationPlayer;
     public Node2D spriteContainer;
+    public GameManager gameManager;
     public Sprite2D sprite;
     public StatsComponent statsComponent;
     public Timer iFrames;
@@ -27,9 +28,12 @@ public partial class Player : CharacterBody2D
         this.spriteContainer = GetNode<Node2D>("SpriteContainer");
         this.statsComponent = GetNode<StatsComponent>("StatsComponent");
         this.sprite = GetNode<Sprite2D>("SpriteContainer/Player");
+        this.gameManager = GetNode<GameManager>("/root/Gameplay/GameManager");
         this.iFrames = GetNode<Timer>("IFrames");
         this.level = new PlayerLevel(this);
 
+        // set the initial spawn position (this only runs for entrypoint levels)
+        this.Position = this.gameManager.levelManager.currentLevelInfo.playerSpawnLocation;
         this.statsComponent.Init(maxHealth: maxHealth, 
                                 moveSpeed: moveSpeed, 
                                 jumpVelocity: jumpVelocity,
