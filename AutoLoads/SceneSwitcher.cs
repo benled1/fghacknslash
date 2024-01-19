@@ -4,6 +4,8 @@ using Godot;
 
 public partial class SceneSwitcher: Node
 {
+
+    public string gameplayLevel;
     private PackedScene newScene;
     private LoadingScreen loadingScreen;
 
@@ -11,14 +13,11 @@ public partial class SceneSwitcher: Node
     {
         this.loadingScreen = GetNode<LoadingScreen>("/root/LoadingScreen");
     }
-    public void loadNewScene(string newSceneString)
+
+    public void loadGameplay(string levelPath)
     {
-        this.newScene = ResourceLoader.Load<PackedScene>(newSceneString);
-        this.loadingScreen.startTransition("fade");
+        this.gameplayLevel = levelPath;
+        GetTree().ChangeSceneToFile("res://Scenes/Gameplay/Gameplay.tscn");
     }
 
-    private void _transferContent()
-    {
-        
-    }
 }

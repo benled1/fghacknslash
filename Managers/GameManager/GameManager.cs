@@ -15,7 +15,6 @@ public partial class GameManager : Node2D
         this.levelManager = GetNode<LevelManager>("LevelManager");
 
 		this.stateMachine.Init();
-        this.levelManager.loadLevel("res://Scenes/Levels/TestLevel/TestWorldWave.tscn");
     }
 
 	public override void _Process(double delta)

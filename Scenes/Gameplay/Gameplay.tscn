@@ -1,10 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8un53f770wx0"]
+[gd_scene load_steps=2 format=3 uid="uid://c8un53f770wx0"]
 
-[ext_resource type="PackedScene" uid="uid://dbitxs2phqwgm" path="res://Entities/Player/Player.tscn" id="1_rhy36"]
-[ext_resource type="PackedScene" uid="uid://bv70wniwoxvvj" path="res://Managers/GameManager/GameManager.tscn" id="3_2reym"]
+[ext_resource type="Script" path="res://Scenes/Gameplay/Gameplay.cs" id="1_ri117"]
 
 [node name="Gameplay" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_rhy36")]
-
-[node name="GameManager" parent="." instance=ExtResource("3_2reym")]
+script = ExtResource("1_ri117")

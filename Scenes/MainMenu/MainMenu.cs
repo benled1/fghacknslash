@@ -3,8 +3,14 @@ using System;
 
 public partial class MainMenu : Node2D
 {
-	private void onPlayButtonPressed()
+	SceneSwitcher sceneSwitcher;
+
+    public override void _Ready()
+    {
+        sceneSwitcher = GetNode<SceneSwitcher>("/root/SceneSwitcher");
+	}
+    private void onPlayButtonPressed()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/Gameplay/Gameplay.tscn");	
+		this.sceneSwitcher.loadGameplay("res://Scenes/Levels/TestLevel/TestWorldWave.tscn");
 	}
 }
