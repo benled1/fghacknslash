@@ -27,7 +27,7 @@ public partial class BossTeleporter : Interactable
     {
 		this.undoDetected();
 		GD.Print("Interacted with teleporter!");
-		this.gameManager.levelManager.loadLevel("res://Scenes/Levels/TestLevel/BossLevels/Boss1.tscn");
+		this.gameManager.levelManager.loadLevel("res://Scenes/Levels/TestLevel/BossLevels/Boss1Room.tscn");
     }
 
 

@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxpcssqdbdymh"]
+[gd_scene load_steps=6 format=3 uid="uid://dxpcssqdbdymh"]
 
-[ext_resource type="Texture2D" uid="uid://dbn6dsi0wi3al" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_dhofa"]
-[ext_resource type="PackedScene" uid="uid://c44c3b6n3hpnb" path="res://DebugTools/fpsCounter/fps_counter.tscn" id="2_bbn4r"]
+[ext_resource type="Texture2D" uid="uid://dbn6dsi0wi3al" path="res://Assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_q560j"]
+[ext_resource type="PackedScene" uid="uid://c44c3b6n3hpnb" path="res://DebugTools/fpsCounter/fps_counter.tscn" id="2_rs8wd"]
+[ext_resource type="PackedScene" uid="uid://dyhj2e4p0d4g8" path="res://Entities/Enemies/Bosses/KingPig/KingPig.tscn" id="3_ibnqm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c453a"]
 resource_name = "TestSet"
-texture = ExtResource("1_dhofa")
+texture = ExtResource("1_q560j")
 texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -303,11 +304,14 @@ texture_region_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_c453a")
 
-[node name="Boss1" type="Node2D"]
+[node name="Boss1Room" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_quf1n")
 format = 2
 layer_0/tile_data = PackedInt32Array(1966095, 131072, 1, 1966096, 131072, 1, 1966097, 131072, 1, 1966098, 131072, 1, 1966099, 131072, 1, 1966100, 131072, 1, 1966101, 131072, 1, 1966102, 131072, 1, 1966103, 131072, 1, 1966104, 131072, 1, 1966105, 131072, 1, 1966106, 131072, 1, 1966107, 131072, 1, 1966108, 131072, 1, 1966109, 131072, 1, 1966110, 131072, 1, 1966111, 131072, 1, 1966112, 131072, 1, 1966113, 131072, 1, 1966114, 131072, 1, 1966115, 131072, 1, 1966116, 131072, 1, 1966117, 131072, 1, 1966118, 131072, 1, 1966119, 131072, 1, 1966120, 131072, 1, 1966121, 131072, 1, 1966122, 131072, 1, 1966123, 131072, 1, 1966124, 131072, 1, 1966125, 131072, 1, 1966126, 131072, 1, 1966127, 131072, 1, 1966128, 131072, 1, 1966129, 131072, 1, 1966130, 131072, 1, 1966131, 131072, 1, 1966132, 131072, 1, 1966133, 131072, 1, 1966134, 131072, 1, 1966135, 131072, 1, 1966136, 131072, 1, 1966137, 131072, 1, 1835021, 196608, 2, 786445, 196608, 2, 917517, 196608, 2, 983053, 196608, 2, 1048589, 196608, 2, 1114125, 196608, 2, 1179661, 196608, 2, 1245197, 196608, 2, 1310733, 196608, 2, 1376269, 196608, 2, 1441805, 196608, 2, 1507341, 196608, 2, 1572877, 196608, 2, 1638413, 196608, 2, 1703949, 196608, 2, 1769485, 196608, 2, 1835067, 65536, 2, 1769531, 65536, 2, 1703995, 65536, 2, 1638459, 65536, 2, 1572923, 65536, 2, 1507387, 65536, 2, 1441851, 65536, 2, 1376315, 65536, 2, 1310779, 65536, 2, 1245243, 65536, 2, 1179707, 65536, 2, 1114171, 65536, 2, 1048635, 65536, 2, 983099, 65536, 2, 917563, 65536, 2, 852027, 65536, 2, 1966139, 524288, 2, 1966093, 458752, 2, 655373, 458752, 1, 655375, 131072, 3, 655376, 131072, 3, 655377, 131072, 3, 655378, 131072, 3, 655379, 131072, 3, 655380, 131072, 3, 655381, 131072, 3, 655382, 131072, 3, 655383, 131072, 3, 655384, 131072, 3, 655385, 131072, 3, 655386, 131072, 3, 655387, 131072, 3, 655388, 131072, 3, 655389, 131072, 3, 655390, 131072, 3, 655391, 131072, 3, 655392, 131072, 3, 655393, 131072, 3, 655394, 131072, 3, 655395, 131072, 3, 655396, 131072, 3, 655397, 131072, 3, 655398, 131072, 3, 655399, 131072, 3, 655400, 131072, 3, 655401, 131072, 3, 655402, 131072, 3, 655403, 131072, 3, 655404, 131072, 3, 655405, 131072, 3, 655406, 131072, 3, 655407, 131072, 3, 655408, 131072, 3, 655409, 131072, 3, 655410, 131072, 3, 655411, 131072, 3, 655412, 131072, 3, 655413, 131072, 3, 655414, 131072, 3, 655415, 131072, 3, 655416, 131072, 3, 655417, 131072, 3, 786491, 65536, 2, 655419, 524288, 1)
 
-[node name="FPSCounter" parent="." instance=ExtResource("2_bbn4r")]
+[node name="FPSCounter" parent="." instance=ExtResource("2_rs8wd")]
+
+[node name="KingPig" parent="." instance=ExtResource("3_ibnqm")]
+position = Vector2(706, 383)
