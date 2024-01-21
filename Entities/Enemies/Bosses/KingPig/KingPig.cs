@@ -12,7 +12,10 @@ public partial class KingPig : CharacterBody2D
     {
         this.bossPhase = 1;
         this.stateMachine = GetNode<StateMachine>("StateMachine_Phase1");
+        GD.Print(stateMachine);
         this.animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+
+        this.stateMachine.Init();
     }
 
     
