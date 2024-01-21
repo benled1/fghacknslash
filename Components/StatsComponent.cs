@@ -7,6 +7,7 @@ public partial class StatsComponent : Node2D
 	public DamageStats damageStats = new DamageStats();
 	public HealthStats healthStats = new HealthStats();
 	public MovementStats movementStats = new MovementStats();
+	public DefenseStats defenseStats = new DefenseStats();
 
 	//move invincible to a statuses system.
 	public bool invincible;
@@ -17,7 +18,8 @@ public partial class StatsComponent : Node2D
 					float jumpVelocity=0,
 					float airControlSpeed=0,
 					float physicalAttack=0,
-					float knockBackForce=0)
+					float knockBackForce=0,
+					bool staggerable=true)
 	{
 		// health stats
 		this.healthStats.maxHealth = maxHealth;
@@ -33,6 +35,9 @@ public partial class StatsComponent : Node2D
 		// damage stats
 		this.damageStats.knockBackForce = knockBackForce;
 		this.damageStats.physicalAttack = physicalAttack;
+
+		// defense stats
+		this.defenseStats.staggerable = staggerable;
 
 		// this should be moved to a status system.
 		this.invincible = false;

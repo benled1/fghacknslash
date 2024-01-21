@@ -14,6 +14,7 @@ public partial class HitboxComponent : Area2D
 
     public void hit(Attack attack)
 	{
+		GD.Print("HIT SMTH");
 		if (statsComponent.invincible)
 		{
 			return;
@@ -26,9 +27,18 @@ public partial class HitboxComponent : Area2D
 		}
 		else
 		{
-			if (statsComponent.GetParent() is Player player)
+			if (!statsComponent.defenseStats.staggerable)
 			{
-				player.iFrames.Start();
+				// this should be handled in some generic status way through the status system when it is implemented
+				if (statsComponent.GetParent() is Player player)
+				{
+					player.iFrames.Start();
+				} 
+				else 
+				{
+					GD.Print("HIT THE ENEMY");
+				}
+				
 			}
 			else 
 			{

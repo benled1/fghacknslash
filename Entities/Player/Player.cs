@@ -9,6 +9,7 @@ public partial class Player : CharacterBody2D
 	private float jumpVelocity = 400;
     private float physicalAttack = 10;
     private float knockBackForce = 10;
+    private bool staggerable = false;
 
     
     // NODE REFERENCES
@@ -38,7 +39,8 @@ public partial class Player : CharacterBody2D
                                 moveSpeed: moveSpeed, 
                                 jumpVelocity: jumpVelocity,
                                 physicalAttack: physicalAttack,
-                                knockBackForce: knockBackForce);
+                                knockBackForce: knockBackForce,
+                                staggerable: staggerable);
 		this.stateMachine.Init();
 	}
 

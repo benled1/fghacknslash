@@ -10,6 +10,7 @@ public partial class Enemy: CharacterBody2D
 	protected float moveSpeed;
 	protected float jumpVelocity;
     protected float physicalAttack;
+    protected bool staggerable;
 
 	public Player player;
 	public AnimationPlayer animationPlayer;

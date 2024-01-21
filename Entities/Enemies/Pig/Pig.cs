@@ -13,6 +13,7 @@ public partial class Pig : Enemy
         this.moveSpeed = 100;
         this.jumpVelocity = 50;
         this.physicalAttack = 10;
+        this.staggerable = true;
 
         // set node references
         this.stateMachine = GetNode<StateMachine>("StateMachine");
@@ -32,7 +33,8 @@ public partial class Pig : Enemy
                                 direction: direction,
                                 moveSpeed: moveSpeed,
                                 jumpVelocity: jumpVelocity,
-                                physicalAttack: physicalAttack);
+                                physicalAttack: physicalAttack,
+                                staggerable: staggerable);
         
         // init the statemachine
 		this.stateMachine.Init();

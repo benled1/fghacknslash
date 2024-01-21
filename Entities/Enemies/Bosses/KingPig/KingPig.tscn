@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyhj2e4p0d4g8"]
+[gd_scene load_steps=12 format=3 uid="uid://dyhj2e4p0d4g8"]
 
 [ext_resource type="Script" path="res://Entities/Enemies/Bosses/KingPig/KingPig.cs" id="1_asjae"]
 [ext_resource type="Texture2D" uid="uid://c4x6d5q0k0xbx" path="res://Assets/Kings and Pigs/Sprites/02-King Pig/Idle (38x28).png" id="2_65kxr"]
+[ext_resource type="Script" path="res://Components/HitboxComponent.cs" id="3_b8wo2"]
 [ext_resource type="Script" path="res://Classes/StateMachine.cs" id="3_bpqir"]
 [ext_resource type="Script" path="res://Entities/Enemies/Bosses/KingPig/States/KingPigIdle.cs" id="4_2yow7"]
+[ext_resource type="Script" path="res://Components/StatsComponent.cs" id="5_0pp4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qebvi"]
-size = Vector2(21, 26)
+size = Vector2(44, 62)
 
 [sub_resource type="Animation" id="Animation_safgo"]
 resource_name = "Idle"
@@ -118,6 +120,9 @@ _data = {
 "RESET": SubResource("Animation_4cm0e")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eodup"]
+size = Vector2(52, 62)
+
 [node name="KingPig" type="CharacterBody2D"]
 script = ExtResource("1_asjae")
 
@@ -126,12 +131,12 @@ script = ExtResource("1_asjae")
 [node name="Sprite2D" type="Sprite2D" parent="SpriteContainer"]
 texture_filter = 1
 position = Vector2(0, -12)
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("2_65kxr")
 hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, -3)
+position = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_qebvi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -139,9 +144,19 @@ libraries = {
 "": SubResource("AnimationLibrary_kgitr")
 }
 
-[node name="StateMachine_Phase1" type="Node2D" parent="."]
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("3_b8wo2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_eodup")
+
+[node name="StatsComponent" type="Node2D" parent="."]
+script = ExtResource("5_0pp4q")
+
+[node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("3_bpqir")
 initialState = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="StateMachine_Phase1"]
+[node name="Idle" type="Node2D" parent="StateMachine"]
 script = ExtResource("4_2yow7")
