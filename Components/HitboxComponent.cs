@@ -14,7 +14,6 @@ public partial class HitboxComponent : Area2D
 
     public void hit(Attack attack)
 	{
-		GD.Print("HIT SMTH");
 		if (statsComponent.invincible)
 		{
 			return;

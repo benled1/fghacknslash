@@ -11,6 +11,6 @@ public partial class MainMenu : Node2D
 	}
     private void onPlayButtonPressed()
 	{
-		this.sceneSwitcher.loadGameplay("res://Scenes/Levels/TestLevel/TestWorldWave.tscn");
+		this.sceneSwitcher.loadGameplay("res://Scenes/Levels/TestLevel/MobLevels/TestWorldWave/TestWorldWave.tscn");
 	}
 }

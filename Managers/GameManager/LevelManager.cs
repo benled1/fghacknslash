@@ -53,9 +53,9 @@ public partial class LevelManager: Node2D
 
     private void initLevelDict()
     {
-        GameplayLevel testLevel = new GameplayLevel("res://Scenes/Levels/TestLevel/TestWorldWave.tscn", new Vector2(380,250), true);
+        GameplayLevel testLevel = new GameplayLevel("res://Scenes/Levels/TestLevel/MobLevels/TestWorldWave/TestWorldWave.tscn", new Vector2(380,250), true);
         GameplayLevel testLevelBossRoom1 = new GameplayLevel("res://Scenes/Levels/TestLevel/BossLevels/Boss1Room.tscn", new Vector2(380,250), false);
-        this.levelInfoDict.Add("res://Scenes/Levels/TestLevel/TestWorldWave.tscn", testLevel);
+        this.levelInfoDict.Add("res://Scenes/Levels/TestLevel/MobLevels/TestWorldWave/TestWorldWave.tscn", testLevel);
         this.levelInfoDict.Add("res://Scenes/Levels/TestLevel/BossLevels/Boss1Room.tscn", testLevelBossRoom1);
     }
 
